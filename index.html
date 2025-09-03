@@ -448,14 +448,9 @@
                     <span>Jami:</span>
                     <span id="cartTotal" class="text-orange-400">0 so'm</span>
                 </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="checkout()" class="w-full bg-gradient-to-r from-green-500 to-green-600 py-3 rounded-full font-semibold hover:scale-105 transition duration-300">
-                        ✅ Buyurtma Berish
-                    </button>
-                    <button id="sendBtn" onclick="sendToTelegram()" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 py-3 rounded-full font-semibold hover:scale-105 transition duration-300">
-                        📱 Telegram
-                    </button>
-                </div>
+                                 <button onclick="checkout()" class="w-full bg-gradient-to-r from-green-500 to-green-600 py-3 rounded-full font-semibold hover:scale-105 transition duration-300">
+                     ✅ Buyurtma Berish
+                 </button>
             </div>
         </div>
     </div>
@@ -1220,45 +1215,155 @@
             modal.classList.toggle('hidden');
         }
 
-        // Checkout
-        function checkout() {
-            if (cart.length === 0) {
-                showNotification('Savat bo\'sh!', 'error');
-                return;
-            }
-            
-            // Check if user is logged in
-            if (!localStorage.getItem('userLoggedIn')) {
-                showNotification('Iltimos, avval ma\'lumotlaringizni kiriting!', 'error');
-                toggleLogin();
-                return;
-            }
-            
-            const userName = localStorage.getItem('userName');
-            const userPhone = localStorage.getItem('userPhone');
-            const userLocation = localStorage.getItem('userLocation');
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const orderDetails = cart.map(item => `${item.name} x${item.quantity}`).join('\n');
-            
-            const orderMessage = `✅ Buyurtmangiz qabul qilindi!
+                 // Checkout
+         function checkout() {
+             if (cart.length === 0) {
+                 showNotification('Savat bo\'sh!', 'error');
+                 return;
+             }
+             
+             // Check if user is logged in
+             if (!localStorage.getItem('userLoggedIn')) {
+                 showNotification('Iltimos, avval ma\'lumotlaringizni kiriting!', 'error');
+                 toggleLogin();
+                 return;
+             }
+             
+             const userName = localStorage.getItem('userName');
+             const userPhone = localStorage.getItem('userPhone');
+             const userLocation = localStorage.getItem('userLocation');
+             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+             const orderDetails = cart.map(item => `${item.name} x${item.quantity}`).join('\n');
+             
+             // Try to send to Telegram first
+             try {
+                 // Check if Telegram Web App is available
+                 if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
+                     const tg = window.Telegram.WebApp;
+                     
+                     // Prepare order data
+                     const orderData = {
+                         type: 'order',
+                         customer: {
+                             name: userName,
+                             phone: userPhone,
+                             location: userLocation
+                         },
+                         items: cart.map(item => ({
+                             id: item.id,
+                             name: item.name,
+                             price: item.price,
+                             quantity: item.quantity,
+                             total: item.price * item.quantity
+                         })),
+                         total: total,
+                         timestamp: new Date().toISOString(),
+                         restaurant: 'Popays Fast Food'
+                     };
+                     
+                     // Send data to Telegram
+                     tg.sendData(JSON.stringify(orderData));
+                     
+                     showNotification('Buyurtma Telegram ga yuborildi! 📱', 'success');
+                     
+                     // Clear cart after sending
+                     cart = [];
+                     updateCartUI();
+                     toggleCart();
+                     
+                 } else {
+                     // Fallback: show order details and Telegram message
+                     const telegramMessage = `🍔 *POPAYS FAST FOOD - YANGI BUYURTMA*
 
-👤 Mijoz: ${userName}
-📞 Telefon: ${userPhone}
-📍 Lokatsiya: ${userLocation}
+ 👤 *Mijoz:* ${userName}
+ 📞 *Telefon:* ${userPhone}
+ 📍 *Lokatsiya:* ${userLocation}
 
-🛒 Buyurtma:
-${orderDetails}
+ 🛒 *Buyurtma:*
+ ${orderDetails}
 
-💰 Jami: ${total.toLocaleString()} so'm
+ 💰 *Jami:* ${total.toLocaleString()} so'm
 
-🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
-            
-            alert(orderMessage);
-            
-            cart = [];
-            updateCartUI();
-            toggleCart();
-        }
+ ⏰ *Vaqt:* ${new Date().toLocaleString('uz-UZ')}
+
+ 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
+                     
+                     // Show success message with Telegram info
+                     const orderMessage = `✅ Buyurtmangiz qabul qilindi!
+
+ 👤 Mijoz: ${userName}
+ 📞 Telefon: ${userPhone}
+ 📍 Lokatsiya: ${userLocation}
+
+ 🛒 Buyurtma:
+ ${orderDetails}
+
+ 💰 Jami: ${total.toLocaleString()} so'm
+
+ 📱 Buyurtma Telegram ga yuborildi!
+ 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
+                     
+                     alert(orderMessage);
+                     
+                     // Show Telegram message for manual copy
+                     const modal = document.createElement('div');
+                     modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+                     modal.innerHTML = `
+                         <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto border border-blue-500/30 slide-in">
+                             <div class="flex justify-between items-center mb-6">
+                                 <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
+                                     📱 Telegram ga Yuborish
+                                 </h3>
+                                 <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-white text-2xl">
+                                     <i class="fas fa-times"></i>
+                                 </button>
+                             </div>
+                             <div class="bg-gray-800 rounded-xl p-4 mb-6">
+                                 <p class="text-gray-300 mb-4">Quyidagi xabarni Telegram ga nusxalab yuboring:</p>
+                                 <textarea class="w-full h-32 bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none resize-none" readonly>${telegramMessage}</textarea>
+                             </div>
+                             <div class="flex space-x-3">
+                                 <button onclick="navigator.clipboard.writeText('${telegramMessage.replace(/'/g, "\\'")}').then(() => showNotification('Xabar nusxalandi! 📋', 'success'))" class="flex-1 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition">
+                                     <i class="fas fa-copy mr-2"></i>Nusxalash
+                                 </button>
+                                 <button onclick="window.open('https://t.me/popays_admin', '_blank')" class="flex-1 bg-green-600 hover:bg-green-700 py-3 rounded-lg font-semibold transition">
+                                     <i class="fab fa-telegram mr-2"></i>Telegram
+                                 </button>
+                             </div>
+                         </div>
+                     `;
+                     document.body.appendChild(modal);
+                     
+                     // Clear cart
+                     cart = [];
+                     updateCartUI();
+                     toggleCart();
+                 }
+                 
+             } catch (error) {
+                 console.error('Telegram yuborishda xatolik:', error);
+                 
+                 // Fallback to regular checkout
+                 const orderMessage = `✅ Buyurtmangiz qabul qilindi!
+
+ 👤 Mijoz: ${userName}
+ 📞 Telefon: ${userPhone}
+ 📍 Lokatsiya: ${userLocation}
+
+ 🛒 Buyurtma:
+ ${orderDetails}
+
+ 💰 Jami: ${total.toLocaleString()} so'm
+
+ 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
+                 
+                 alert(orderMessage);
+                 
+                 cart = [];
+                 updateCartUI();
+                 toggleCart();
+             }
+         }
 
         // Initialize Telegram Web App
         function initializeTelegramWebApp() {
