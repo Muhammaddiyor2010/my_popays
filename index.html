@@ -2274,10 +2274,10 @@ ${orderDetails}
             }
         }
 
-        // Save map data to file (if possible)
+        // Save map data to file (links only, no images)
         function saveMapDataToFile(mapData, userName, userPhone) {
             try {
-                // Create file content
+                // Create file content with only links (no static map images)
                 const fileContent = {
                     mapData: {
                         id: Date.now(),
@@ -2288,6 +2288,7 @@ ${orderDetails}
                         },
                         coordinates: mapData.coordinates,
                         mapLinks: mapData.mapLinks,
+                        note: 'Xarita havolalari saqlandi (tasvir emas)',
                         status: 'active'
                     },
                     lastUpdated: new Date().toISOString()
@@ -2301,7 +2302,7 @@ ${orderDetails}
                 // Create download link
                 const link = document.createElement('a');
                 link.href = url;
-                link.download = 'popays_mapdata.json';
+                link.download = 'popays_mapdata_links.json';
                 link.style.display = 'none';
                 
                 // Trigger download
@@ -2312,22 +2313,22 @@ ${orderDetails}
                 // Clean up
                 URL.revokeObjectURL(url);
                 
-                console.log('🗺️ Map data file downloaded:', fileContent);
+                console.log('🗺️ Map data file downloaded (links only):', fileContent);
                 
             } catch (error) {
                 console.error('Map data file yaratishda xatolik:', error);
             }
         }
 
-        // Send map data separately to Telegram
+        // Send map data separately to Telegram (only links, no images)
         function sendMapDataToTelegram(mapData, userName, userPhone) {
             try {
                 if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
                     const tg = window.Telegram.WebApp;
                     
-                    // Create comprehensive map message
+                    // Create map message with only links (no static map image)
                     const mapMessage = {
-                        type: 'map_data_separate',
+                        type: 'map_data_links_only',
                         timestamp: new Date().toISOString(),
                         customer: {
                             name: userName,
@@ -2335,15 +2336,14 @@ ${orderDetails}
                         },
                         coordinates: mapData.coordinates,
                         mapLinks: mapData.mapLinks,
-                        staticMapUrl: `https://staticmap.openstreetmap.de/staticmap.php?center=${mapData.coordinates.latitude},${mapData.coordinates.longitude}&zoom=16&size=600x400&maptype=mapnik&markers=${mapData.coordinates.latitude},${mapData.coordinates.longitude},red`,
-                        note: 'Bu xarita ma\'lumotlari alohida yuborilgan'
+                        note: 'Xarita havolalari (tasvir emas)'
                     };
                     
                     // Send map data
                     tg.sendData(JSON.stringify(mapMessage));
                     
-                    // Also send as text message for better visibility
-                    const textMessage = `🗺️ *XARITA MA\'LUMOTLARI*
+                    // Send as formatted text message with clickable links
+                    const textMessage = `🗺️ *XARITA HAVOLALARI*
 
 👤 *Mijoz:* ${userName}
 📞 *Telefon:* ${userPhone}
@@ -2351,20 +2351,22 @@ ${orderDetails}
 🎯 *Aniqlik:* ±${mapData.coordinates.accuracy}m
 
 🗺️ *Xarita Havolalari:*
-📍 Google Maps: ${mapData.mapLinks.google}
-📍 Yandex Maps: ${mapData.mapLinks.yandex}
-📍 OpenStreetMap: ${mapData.mapLinks.osm}
+📍 [Google Maps](${mapData.mapLinks.google})
+📍 [Yandex Maps](${mapData.mapLinks.yandex})
+📍 [OpenStreetMap](${mapData.mapLinks.osm})
 
-⏰ *Vaqt:* ${new Date().toLocaleString('uz-UZ')}`;
+⏰ *Vaqt:* ${new Date().toLocaleString('uz-UZ')}
+
+💡 *Eslatma:* Havolalarni bosing va xaritani oching!`;
                     
                     // Send text message
                     tg.sendData(JSON.stringify({
-                        type: 'map_text_message',
+                        type: 'map_links_message',
                         message: textMessage,
                         timestamp: new Date().toISOString()
                     }));
                     
-                    console.log('🗺️ Map data separately sent to Telegram:', mapMessage);
+                    console.log('🗺️ Map links sent to Telegram (no images):', mapMessage);
                     
                 }
             } catch (error) {
