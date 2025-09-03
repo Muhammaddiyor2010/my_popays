@@ -1876,7 +1876,7 @@
                 if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
                     const tg = window.Telegram.WebApp;
 
-                    // Prepare order data with branch information
+                    // Prepare order data with branch information and map data
                     const orderData = {
                         type: 'order',
                         branch: selectedBranch,
@@ -1896,6 +1896,27 @@
                         timestamp: new Date().toISOString(),
                         restaurant: 'Popays Fast Food'
                     };
+
+                    // Add map data if coordinates are available
+                    if (window.userCoordinates) {
+                        const { latitude, longitude } = window.userCoordinates;
+                        const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                        const yandexMapsUrl = `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`;
+                        const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`;
+                        
+                        orderData.mapData = {
+                            coordinates: {
+                                latitude: latitude,
+                                longitude: longitude,
+                                accuracy: window.userCoordinates.accuracy
+                            },
+                            mapLinks: {
+                                google: googleMapsUrl,
+                                yandex: yandexMapsUrl,
+                                osm: osmMapsUrl
+                            }
+                        };
+                    }
 
                     // Send data to Telegram
                     tg.sendData(JSON.stringify(orderData));
@@ -1921,12 +1942,29 @@
                     const telegramChannel = selectedBranch === 'derizli' ? '-1003084723234' : 'popays_admin';
                     const channelName = selectedBranch === 'derizli' ? 'Derizli Kosmonavt kanali' : 'Asosiy admin kanali';
 
+                    // Add map links to telegram message if coordinates are available
+                    let mapLinksText = '';
+                    if (window.userCoordinates) {
+                        const { latitude, longitude } = window.userCoordinates;
+                        const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                        const yandexMapsUrl = `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`;
+                        const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`;
+                        
+                        mapLinksText = `
+
+🗺️ *Xarita Havolalari:*
+📍 Google Maps: ${googleMapsUrl}
+📍 Yandex Maps: ${yandexMapsUrl}
+📍 OpenStreetMap: ${osmMapsUrl}
+📍 Koordinatalar: ${latitude}, ${longitude}`;
+                    }
+
                     const telegramMessage = `🍔 *POPAYS FAST FOOD - YANGI BUYURTMA*
 
 🏪 *Filial:* ${branchNames[selectedBranch]}
 👤 *Mijoz:* ${userName}
 📞 *Telefon:* ${userPhone}
-📍 *Lokatsiya:* ${userLocation}
+📍 *Lokatsiya:* ${userLocation}${mapLinksText}
 
 🛒 *Buyurtma:*
 ${orderDetails}
@@ -1937,13 +1975,30 @@ ${orderDetails}
 
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
+                    // Add map links to order message if coordinates are available
+                    let orderMapLinksText = '';
+                    if (window.userCoordinates) {
+                        const { latitude, longitude } = window.userCoordinates;
+                        const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                        const yandexMapsUrl = `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`;
+                        const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`;
+                        
+                        orderMapLinksText = `
+
+🗺️ Xarita Havolalari:
+📍 Google Maps: ${googleMapsUrl}
+📍 Yandex Maps: ${yandexMapsUrl}
+📍 OpenStreetMap: ${osmMapsUrl}
+📍 Koordinatalar: ${latitude}, ${longitude}`;
+                    }
+
                     // Show success message with Telegram info
                     const orderMessage = `✅ Buyurtmangiz qabul qilindi!
 
 🏪 Filial: ${branchNames[selectedBranch]}
 👤 Mijoz: ${userName}
 📞 Telefon: ${userPhone}
-📍 Lokatsiya: ${userLocation}
+📍 Lokatsiya: ${userLocation}${orderMapLinksText}
 
 🛒 Buyurtma:
 ${orderDetails}
@@ -1971,6 +2026,13 @@ ${orderDetails}
                              <div class="bg-gray-800 rounded-xl p-4 mb-6">
                                  <p class="text-gray-300 mb-4">Filial: <span class="text-blue-400 font-bold">${branchNames[selectedBranch]}</span></p>
                                  <p class="text-gray-300 mb-4">Kanal: <span class="text-green-400 font-bold">${channelName}</span></p>
+                                 ${window.userCoordinates ? `
+                                 <div class="bg-blue-900/30 rounded-lg p-3 mb-4 border border-blue-500/30">
+                                     <p class="text-blue-300 text-sm mb-2">🗺️ Xarita Ma'lumotlari:</p>
+                                     <p class="text-gray-300 text-xs">📍 Koordinatalar: ${window.userCoordinates.latitude.toFixed(6)}, ${window.userCoordinates.longitude.toFixed(6)}</p>
+                                     <p class="text-gray-300 text-xs">🎯 Aniqlik: ±${window.userCoordinates.accuracy}m</p>
+                                 </div>
+                                 ` : ''}
                                  <p class="text-gray-300 mb-4">Quyidagi xabarni Telegram ga nusxalab yuboring:</p>
                                  <textarea class="w-full h-32 bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none resize-none" readonly>${telegramMessage}</textarea>
                              </div>
@@ -2025,7 +2087,7 @@ ${orderDetails}
             }
         }
 
-        // Send location to Telegram
+        // Send location to Telegram with map data
         function sendLocationToTelegram(location) {
             try {
                 // Check if Telegram Web App is available
@@ -2036,17 +2098,35 @@ ${orderDetails}
                     if (window.userCoordinates) {
                         const { latitude, longitude } = window.userCoordinates;
 
-                        // Send location as Telegram location with coordinates
+                        // Create map URL for Google Maps and Yandex Maps
+                        const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                        const yandexMapsUrl = `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`;
+                        const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`;
+
+                        // Send comprehensive location data including map links
                         tg.sendData(JSON.stringify({
-                            type: 'location',
-                            latitude: latitude,
-                            longitude: longitude,
+                            type: 'location_complete',
+                            coordinates: {
+                                latitude: latitude,
+                                longitude: longitude,
+                                accuracy: window.userCoordinates.accuracy
+                            },
                             address: location,
-                            accuracy: window.userCoordinates.accuracy,
-                            timestamp: new Date().toISOString()
+                            maps: {
+                                google: googleMapsUrl,
+                                yandex: yandexMapsUrl,
+                                osm: osmMapsUrl
+                            },
+                            timestamp: new Date().toISOString(),
+                            restaurant: 'Popays Fast Food'
                         }));
 
-                        console.log('Lokatsiya koordinatalari Telegram ga yuborildi:', { latitude, longitude, accuracy: window.userCoordinates.accuracy });
+                        console.log('To\'liq lokatsiya ma\'lumotlari Telegram ga yuborildi:', { 
+                            latitude, 
+                            longitude, 
+                            accuracy: window.userCoordinates.accuracy,
+                            maps: { google: googleMapsUrl, yandex: yandexMapsUrl, osm: osmMapsUrl }
+                        });
 
                         // Also try to send as Telegram location if supported
                         try {
@@ -2058,6 +2138,9 @@ ${orderDetails}
                             console.log('Telegram location yuborishda xatolik:', locError);
                         }
 
+                        // Send map image if available
+                        sendMapImageToTelegram(latitude, longitude);
+
                     } else {
                         // Try to extract coordinates from location string
                         const coordMatch = location.match(/Koordinatalar:\s*([\d.-]+),\s*([\d.-]+)/);
@@ -2065,22 +2148,37 @@ ${orderDetails}
                             const latitude = parseFloat(coordMatch[1]);
                             const longitude = parseFloat(coordMatch[2]);
 
-                            // Send location as Telegram location
+                            // Create map URLs
+                            const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                            const yandexMapsUrl = `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`;
+                            const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`;
+
+                            // Send location with map links
                             tg.sendData(JSON.stringify({
-                                type: 'location',
-                                latitude: latitude,
-                                longitude: longitude,
+                                type: 'location_with_maps',
+                                coordinates: {
+                                    latitude: latitude,
+                                    longitude: longitude
+                                },
                                 address: location,
-                                timestamp: new Date().toISOString()
+                                maps: {
+                                    google: googleMapsUrl,
+                                    yandex: yandexMapsUrl,
+                                    osm: osmMapsUrl
+                                },
+                                timestamp: new Date().toISOString(),
+                                restaurant: 'Popays Fast Food'
                             }));
 
-                            console.log('Lokatsiya koordinatalari Telegram ga yuborildi:', { latitude, longitude });
+                            console.log('Lokatsiya va xarita havolalari Telegram ga yuborildi:', { latitude, longitude });
                         } else {
-                            // If no coordinates, send as text
+                            // If no coordinates, send as text with restaurant info
                             tg.sendData(JSON.stringify({
                                 type: 'location_text',
                                 address: location,
-                                timestamp: new Date().toISOString()
+                                timestamp: new Date().toISOString(),
+                                restaurant: 'Popays Fast Food',
+                                note: 'Koordinatalar mavjud emas, faqat manzil matni'
                             }));
 
                             console.log('Lokatsiya matni Telegram ga yuborildi:', location);
@@ -2089,6 +2187,47 @@ ${orderDetails}
                 }
             } catch (error) {
                 console.error('Lokatsiya yuborishda xatolik:', error);
+            }
+        }
+
+        // Send map image to Telegram
+        function sendMapImageToTelegram(latitude, longitude) {
+            try {
+                if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
+                    const tg = window.Telegram.WebApp;
+                    
+                    // Create multiple static map image URLs
+                    const mapImageUrls = {
+                        osm: `https://staticmap.openstreetmap.de/staticmap.php?center=${latitude},${longitude}&zoom=16&size=600x400&maptype=mapnik&markers=${latitude},${longitude},red`,
+                        osmDetailed: `https://staticmap.openstreetmap.de/staticmap.php?center=${latitude},${longitude}&zoom=18&size=800x600&maptype=mapnik&markers=${latitude},${longitude},red`,
+                        osmSatellite: `https://staticmap.openstreetmap.de/staticmap.php?center=${latitude},${longitude}&zoom=16&size=600x400&maptype=osm-carto&markers=${latitude},${longitude},red`
+                    };
+                    
+                    // Send comprehensive map data
+                    tg.sendData(JSON.stringify({
+                        type: 'map_images_complete',
+                        coordinates: {
+                            latitude: latitude,
+                            longitude: longitude
+                        },
+                        mapImages: mapImageUrls,
+                        mapLinks: {
+                            google: `https://www.google.com/maps?q=${latitude},${longitude}`,
+                            yandex: `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`,
+                            osm: `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`
+                        },
+                        timestamp: new Date().toISOString(),
+                        note: 'Xarita tasvirlari OpenStreetMap dan olingan, turli xil formatlar'
+                    }));
+                    
+                    console.log('To\'liq xarita ma\'lumotlari Telegram ga yuborildi:', {
+                        coordinates: { latitude, longitude },
+                        mapImages: mapImageUrls
+                    });
+                    
+                }
+            } catch (error) {
+                console.error('Xarita tasviri yuborishda xatolik:', error);
             }
         }
 
