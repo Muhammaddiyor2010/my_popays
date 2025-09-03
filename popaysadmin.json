@@ -4,6 +4,26 @@
     "phone": "998 91 269 00 02",
     "isLoggedIn": false
   },
+  "vipSettings": {
+    "title": "🎁 VIP AKSIYA",
+    "discount": "20 gacha chegirma",
+    "minOrder": "100,000 so'mdan ortiq buyurtmaga",
+    "freeDelivery": "3kmgacha dastavka bepul",
+    "gift": "Har 3-buyurtmaga bepul desert",
+    "freeDeliveryTitle": "BEPUL YETKAZIB BERISH",
+    "giftTitle": "SOVG'A"
+  },
+  "aboutSettings": {
+    "advantage1": "Eng sifatli ingredientlar",
+    "advantage2": "Tez va ishonchli yetkazib berish",
+    "advantage3": "24/7 mijozlar xizmati",
+    "advantage4": "Maxsus retseptlar va ziravorlar",
+    "customers": "10,000+",
+    "experience": "5 yil",
+    "goal": "Popays Fast Food - bu faqat taom emas, balki sizning kundalik hayotingizning bir qismi. Biz har bir mijozimizga eng yaxshi taom va xizmatni taqdim etish uchun tinimsiz mehnat qilamiz.",
+    "values": "Sifat, ishonchlilik va mijozlar mamnuniyati - bu bizning asosiy tamoyillarimiz. Har bir taom maxsus e'tibor bilan tayyorlanadi va sizning stolga yetkaziladi."
+  },
+  "registeredUsers": [],
   "products": [
     {
       "id": 1,
