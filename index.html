@@ -2521,54 +2521,152 @@ ${orderDetails}
                 showNotification('Savat bo\'sh!', 'error');
                 return;
             }
-
+            
             // Check if user is logged in
             if (!localStorage.getItem('userLoggedIn')) {
                 showNotification('Iltimos, avval ma\'lumotlaringizni kiriting!', 'error');
                 toggleLogin();
                 return;
             }
-
+            
             try {
                 // Check if Telegram Web App is available
                 if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
                     const tg = window.Telegram.WebApp;
-
+                    
                     // Prepare order data
                     const userName = localStorage.getItem('userName');
                     const userPhone = localStorage.getItem('userPhone');
                     const userLocation = localStorage.getItem('userLocation');
                     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-                    const orderData = {
-                        type: 'order',
-                        customer: {
-                            name: userName,
-                            phone: userPhone,
-                            location: userLocation
-                        },
-                        items: cart.map(item => ({
-                            id: item.id,
-                            name: item.name,
-                            price: item.price,
-                            quantity: item.quantity,
-                            total: item.price * item.quantity
-                        })),
-                        total: total,
-                        timestamp: new Date().toISOString(),
-                        restaurant: 'Popays Fast Food'
-                    };
-
-                    // Send data to Telegram
-                    tg.sendData(JSON.stringify(orderData));
-
-                    showNotification('Buyurtma Telegram ga yuborildi! 📱', 'success');
-
-                    // Clear cart after sending
-                    cart = [];
-                    updateCartUI();
-                    toggleCart();
-
+                    
+                    // Get current location coordinates
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            function(position) {
+                                const coords = position.coords;
+                                
+                                // Create map data structure
+                                const mapData = {
+                                    coordinates: {
+                                        latitude: coords.latitude,
+                                        longitude: coords.longitude,
+                                        accuracy: Math.round(coords.accuracy)
+                                    },
+                                    mapLinks: {
+                                        google: `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`,
+                                        yandex: `https://yandex.com/maps/?pt=${coords.longitude},${coords.latitude}&z=16&l=map`,
+                                        osm: `https://www.openstreetmap.org/?mlat=${coords.latitude}&mlon=${coords.longitude}&zoom=16`
+                                    }
+                                };
+                                
+                                const orderData = {
+                                    type: 'order',
+                                    customer: {
+                                        name: userName,
+                                        phone: userPhone,
+                                        location: userLocation
+                                    },
+                                    items: cart.map(item => ({
+                                        id: item.id,
+                                        name: item.name,
+                                        price: item.price,
+                                        quantity: item.quantity,
+                                        total: item.price * item.quantity
+                                    })),
+                                    total: total,
+                                    timestamp: new Date().toISOString(),
+                                    restaurant: 'Popays Fast Food',
+                                    mapData: mapData  // ← Bu qatorni qo'shish kerak!
+                                };
+                                
+                                console.log('🗺️ Sending order with map data:', orderData);
+                                
+                                // Send data to Telegram bot
+                                tg.sendData(JSON.stringify(orderData));
+                                
+                                showNotification('Buyurtma Telegram ga yuborildi! 📱', 'success');
+                                
+                                // Clear cart after sending
+                                cart = [];
+                                updateCartUI();
+                                toggleCart();
+                            },
+                            function(error) {
+                                console.warn('Lokatsiya olinmadi:', error);
+                                
+                                // Send order without map data
+                                const orderData = {
+                                    type: 'order',
+                                    customer: {
+                                        name: userName,
+                                        phone: userPhone,
+                                        location: userLocation
+                                    },
+                                    items: cart.map(item => ({
+                                        id: item.id,
+                                        name: item.name,
+                                        price: item.price,
+                                        quantity: item.quantity,
+                                        total: item.price * item.quantity
+                                    })),
+                                    total: total,
+                                    timestamp: new Date().toISOString(),
+                                    restaurant: 'Popays Fast Food'
+                                };
+                                
+                                console.log('📍 Sending order without map data:', orderData);
+                                
+                                // Send data to Telegram bot
+                                tg.sendData(JSON.stringify(orderData));
+                                
+                                showNotification('Buyurtma Telegram ga yuborildi! 📱 (Lokatsiya yo\'q)', 'success');
+                                
+                                // Clear cart after sending
+                                cart = [];
+                                updateCartUI();
+                                toggleCart();
+                            },
+                            {
+                                enableHighAccuracy: true,
+                                timeout: 10000,
+                                maximumAge: 60000
+                            }
+                        );
+                    } else {
+                        // Geolocation not supported, send order without map data
+                        const orderData = {
+                            type: 'order',
+                            customer: {
+                                name: userName,
+                                phone: userPhone,
+                                location: userLocation
+                            },
+                            items: cart.map(item => ({
+                                id: item.id,
+                                name: item.name,
+                                price: item.price,
+                                quantity: item.quantity,
+                                total: item.price * item.quantity
+                            })),
+                            total: total,
+                            timestamp: new Date().toISOString(),
+                            restaurant: 'Popays Fast Food'
+                        };
+                        
+                        console.log('📍 Geolocation not supported, sending order without map data:', orderData);
+                        
+                        // Send data to Telegram bot
+                        tg.sendData(JSON.stringify(orderData));
+                        
+                        showNotification('Buyurtma Telegram ga yuborildi! 📱 (Lokatsiya yo\'q)', 'success');
+                        
+                        // Clear cart after sending
+                        cart = [];
+                        updateCartUI();
+                        toggleCart();
+                    }
+                    
                 } else {
                     // Fallback: show order details for manual copy
                     const userName = localStorage.getItem('userName');
@@ -2610,7 +2708,7 @@ ${orderDetails}
                                 <textarea class="w-full h-32 bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none resize-none" readonly>${telegramMessage}</textarea>
                             </div>
                             <div class="flex space-x-3">
-                                <button onclick="navigator.clipboard.writeText('${telegramMessage.replace(/'/g, "\\'")}').then(() => showNotification('Xabar nusxalandi! 📋', 'success'))" class="flex-1 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition">
+                                <button onclick="navigator.clipboard.writeText('${telegramMessage.replace(/'/g, "\\'")}').then(() => showNotification('Xabar nusxalandi! 📋', 'success'))" class="text-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition">
                                     <i class="fas fa-copy mr-2"></i>Nusxalash
                                 </button>
                                 <button onclick="window.open('https://t.me/popays_admin', '_blank')" class="flex-1 bg-green-600 hover:bg-green-700 py-3 rounded-lg font-semibold transition">
@@ -2620,8 +2718,13 @@ ${orderDetails}
                         </div>
                     `;
                     document.body.appendChild(modal);
-                }
 
+                    // Clear cart after showing modal
+                    cart = [];
+                    updateCartUI();
+                    toggleCart();
+                }
+                
             } catch (error) {
                 console.error('Telegram yuborishda xatolik:', error);
                 showNotification('Telegram yuborishda xatolik yuz berdi!', 'error');
