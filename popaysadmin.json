@@ -1,0 +1,200 @@
+{
+  "admin": {
+    "login": "popaysadmin",
+    "phone": "998 91 269 00 02",
+    "isLoggedIn": false
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Cheese Burger Deluxe",
+      "price": 35000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 9.png",
+      "description": "Ikki qavatli mol go'shti, pishloq, yangi sabzavotlar",
+      "badge": "TOP"
+    },
+    {
+      "id": 2,
+      "name": "Mega Burger",
+      "price": 45000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 8.png",
+      "description": "Uch qavatli maxsus burger, qo'shimcha pishloq",
+      "badge": "NEW"
+    },
+    {
+      "id": 3,
+      "name": "Tovuqli Burger",
+      "price": 32000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 21.png",
+      "description": "Qizdirilgan tovuq go'shti, maxsus sous"
+    },
+    {
+      "id": 4,
+      "name": "Double Cheese Burger",
+      "price": 40000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 23.png",
+      "description": "Ikki qavatli pishloq, mol go'shti"
+    },
+    {
+      "id": 5,
+      "name": "Klassik Lavash",
+      "price": 28000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 20.png",
+      "description": "An'anaviy lavash, mol go'shti, sabzavotlar"
+    },
+    {
+      "id": 6,
+      "name": "Tandir Lavash",
+      "price": 35000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 6.png",
+      "description": "Tandir lavash, maxsus ziravorlar",
+      "badge": "HOT"
+    },
+    {
+      "id": 7,
+      "name": "Tovuqli Lavash",
+      "price": 30000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 7.png",
+      "description": "Tovuq go'shti, yangi sabzavotlar"
+    },
+    {
+      "id": 8,
+      "name": "Mix Lavash",
+      "price": 38000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 22.png",
+      "description": "Qo'ziqorin, go'sht, sabzavotlar"
+    },
+    {
+      "id": 9,
+      "name": "Burger Combo",
+      "price": 55000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 21.jpg",
+      "description": "Burger + kartoshka + ichimlik",
+      "badge": "VIP"
+    },
+    {
+      "id": 10,
+      "name": "Lavash Combo",
+      "price": 48000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 19.png",
+      "description": "Lavash + kartoshka + ichimlik"
+    },
+    {
+      "id": 11,
+      "name": "Pizza Combo",
+      "price": 75000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 18.png",
+      "description": "Pizza + ichimlik + desert"
+    },
+    {
+      "id": 12,
+      "name": "Family Combo",
+      "price": 120000,
+      "category": "combo",
+      "image": "imgs/4 (2).png",
+      "description": "4 ta taom + 4 ta ichimlik",
+      "badge": "FAMILY"
+    },
+    {
+      "id": 13,
+      "name": "Coca-Cola",
+      "price": 12000,
+      "category": "drinks",
+      "image": "imgs/Artboard 1 copy 2.png",
+      "description": "0.5L"
+    },
+    {
+      "id": 14,
+      "name": "Fanta",
+      "price": 12000,
+      "category": "drinks",
+      "image": "imgs/Artboard 1 copy 17.png",
+      "description": "0.5L"
+    },
+    {
+      "id": 15,
+      "name": "Tabiiy Sok",
+      "price": 15000,
+      "category": "drinks",
+      "image": "imgs/Artboard 1 copy 5.png",
+      "description": "1L, olma/apelsin"
+    },
+    {
+      "id": 16,
+      "name": "Kofe",
+      "price": 18000,
+      "category": "drinks",
+      "image": "imgs/Artboard 1 copy 10.png",
+      "description": "Amerikano, latte, cappuccino"
+    },
+    {
+      "id": 17,
+      "name": "Klassik Hot Dog",
+      "price": 25000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 11.png",
+      "description": "Sosiska, sous, sabzavotlar"
+    },
+    {
+      "id": 18,
+      "name": "Cheese Hot Dog",
+      "price": 30000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 16.png",
+      "description": "Sosiska, pishloq, maxsus sous"
+    },
+    {
+      "id": 19,
+      "name": "Mega Hot Dog",
+      "price": 35000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 3.png",
+      "description": "Ikki sosiska, pishloq, sabzavotlar",
+      "badge": "NEW"
+    },
+    {
+      "id": 20,
+      "name": "Pepperoni Pizza",
+      "price": 55000,
+      "category": "pizza",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "30cm, pepperoni, mozzarella pishlog'i"
+    },
+    {
+      "id": 21,
+      "name": "Margarita Pizza",
+      "price": 48000,
+      "category": "pizza",
+      "image": "imgs/Artboard 1 copy 12.png",
+      "description": "30cm, pomidor sousi, mozzarella",
+      "badge": "VIP"
+    },
+    {
+      "id": 22,
+      "name": "Mix Pizza",
+      "price": 65000,
+      "category": "pizza",
+      "image": "imgs/Artboard 1 copy 14.png",
+      "description": "35cm, 4 xil go'sht, qo'ziqorin"
+    },
+    {
+      "id": 23,
+      "name": "BBQ Pizza",
+      "price": 58000,
+      "category": "pizza",
+      "image": "imgs/Artboard 1 copy 13.png",
+      "description": "30cm, BBQ sousi, go'sht, pishloq"
+    }
+  ]
+}
