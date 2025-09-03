@@ -24,6 +24,12 @@
     "values": "Sifat, ishonchlilik va mijozlar mamnuniyati - bu bizning asosiy tamoyillarimiz. Har bir taom maxsus e'tibor bilan tayyorlanadi va sizning stolga yetkaziladi."
   },
   "registeredUsers": [],
+  "mapData": {
+    "description": "Mijozlarning xarita ma'lumotlari va lokatsiyalari",
+    "entries": [],
+    "lastUpdated": "",
+    "totalEntries": 0
+  },
   "products": [
     {
       "id": 1,

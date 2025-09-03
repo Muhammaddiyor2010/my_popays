@@ -2231,6 +2231,147 @@ ${orderDetails}
             }
         }
 
+        // Save map data to JSON file
+        function saveMapDataToJSON(mapData, userName, userPhone) {
+            try {
+                // Create map data entry
+                const mapEntry = {
+                    id: Date.now(),
+                    timestamp: new Date().toISOString(),
+                    customer: {
+                        name: userName,
+                        phone: userPhone
+                    },
+                    coordinates: mapData.coordinates,
+                    mapLinks: mapData.mapLinks,
+                    status: 'active'
+                };
+
+                // Get existing map data from localStorage
+                let existingMapData = JSON.parse(localStorage.getItem('popaysMapData')) || [];
+                
+                // Add new entry
+                existingMapData.push(mapEntry);
+                
+                // Keep only last 100 entries to avoid memory issues
+                if (existingMapData.length > 100) {
+                    existingMapData = existingMapData.slice(-100);
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('popaysMapData', JSON.stringify(existingMapData));
+                
+                // Also save to sessionStorage for current session
+                sessionStorage.setItem('popaysMapData', JSON.stringify(existingMapData));
+                
+                console.log('🗺️ Map data saved to JSON storage:', mapEntry);
+                
+                // Try to save to popaysadmin.json if possible
+                saveMapDataToFile(mapData, userName, userPhone);
+                
+            } catch (error) {
+                console.error('Map data saqlashda xatolik:', error);
+            }
+        }
+
+        // Save map data to file (if possible)
+        function saveMapDataToFile(mapData, userName, userPhone) {
+            try {
+                // Create file content
+                const fileContent = {
+                    mapData: {
+                        id: Date.now(),
+                        timestamp: new Date().toISOString(),
+                        customer: {
+                            name: userName,
+                            phone: userPhone
+                        },
+                        coordinates: mapData.coordinates,
+                        mapLinks: mapData.mapLinks,
+                        status: 'active'
+                    },
+                    lastUpdated: new Date().toISOString()
+                };
+
+                // Create download link for the file
+                const dataStr = JSON.stringify(fileContent, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                
+                // Create download link
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'popays_mapdata.json';
+                link.style.display = 'none';
+                
+                // Trigger download
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Clean up
+                URL.revokeObjectURL(url);
+                
+                console.log('🗺️ Map data file downloaded:', fileContent);
+                
+            } catch (error) {
+                console.error('Map data file yaratishda xatolik:', error);
+            }
+        }
+
+        // Send map data separately to Telegram
+        function sendMapDataToTelegram(mapData, userName, userPhone) {
+            try {
+                if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
+                    const tg = window.Telegram.WebApp;
+                    
+                    // Create comprehensive map message
+                    const mapMessage = {
+                        type: 'map_data_separate',
+                        timestamp: new Date().toISOString(),
+                        customer: {
+                            name: userName,
+                            phone: userPhone
+                        },
+                        coordinates: mapData.coordinates,
+                        mapLinks: mapData.mapLinks,
+                        staticMapUrl: `https://staticmap.openstreetmap.de/staticmap.php?center=${mapData.coordinates.latitude},${mapData.coordinates.longitude}&zoom=16&size=600x400&maptype=mapnik&markers=${mapData.coordinates.latitude},${mapData.coordinates.longitude},red`,
+                        note: 'Bu xarita ma\'lumotlari alohida yuborilgan'
+                    };
+                    
+                    // Send map data
+                    tg.sendData(JSON.stringify(mapMessage));
+                    
+                    // Also send as text message for better visibility
+                    const textMessage = `🗺️ *XARITA MA\'LUMOTLARI*
+
+👤 *Mijoz:* ${userName}
+📞 *Telefon:* ${userPhone}
+📍 *Koordinatalar:* ${mapData.coordinates.latitude}, ${mapData.coordinates.longitude}
+🎯 *Aniqlik:* ±${mapData.coordinates.accuracy}m
+
+🗺️ *Xarita Havolalari:*
+📍 Google Maps: ${mapData.mapLinks.google}
+📍 Yandex Maps: ${mapData.mapLinks.yandex}
+📍 OpenStreetMap: ${mapData.mapLinks.osm}
+
+⏰ *Vaqt:* ${new Date().toLocaleString('uz-UZ')}`;
+                    
+                    // Send text message
+                    tg.sendData(JSON.stringify({
+                        type: 'map_text_message',
+                        message: textMessage,
+                        timestamp: new Date().toISOString()
+                    }));
+                    
+                    console.log('🗺️ Map data separately sent to Telegram:', mapMessage);
+                    
+                }
+            } catch (error) {
+                console.error('Map data Telegram ga yuborishda xatolik:', error);
+            }
+        }
+
         // Load VIP settings
         function loadVipSettings() {
             // Try to load from JSON file first, fallback to localStorage
@@ -2560,6 +2701,9 @@ ${orderDetails}
                                     }
                                 };
                                 
+                                // Save map data to JSON file
+                                saveMapDataToJSON(mapData, userName, userPhone);
+                                
                                 const orderData = {
                                     type: 'order',
                                     customer: {
@@ -2577,13 +2721,16 @@ ${orderDetails}
                                     total: total,
                                     timestamp: new Date().toISOString(),
                                     restaurant: 'Popays Fast Food',
-                                    mapData: mapData  // ← Bu qatorni qo'shish kerak!
+                                    mapData: mapData
                                 };
                                 
                                 console.log('🗺️ Sending order with map data:', orderData);
                                 
                                 // Send data to Telegram bot
                                 tg.sendData(JSON.stringify(orderData));
+                                
+                                // Also send map data separately to ensure it reaches
+                                sendMapDataToTelegram(mapData, userName, userPhone);
                                 
                                 showNotification('Buyurtma Telegram ga yuborildi! 📱', 'success');
                                 
