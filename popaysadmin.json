@@ -5,13 +5,13 @@
     "isLoggedIn": false
   },
   "vipSettings": {
-    "title": "🎁 VIP AKSIYA",
-    "discount": "20 gacha chegirma",
-    "minOrder": "100,000 so'mdan ortiq buyurtmaga",
+    "title": "🎁 Faqatgina botda",
+    "discount": "Afzallik",
+    "minOrder": "Tez va qulay",
     "freeDelivery": "3 kmgacha dastavka bepul",
-    "gift": "Har 3-buyurtmaga bepul desert",
+    "gift": "8mingli HotDog 5ming so'm",
     "freeDeliveryTitle": "BEPUL YETKAZIB BERISH",
-    "giftTitle": "SOVG'A"
+    "giftTitle": "Sovg'a"
   },
   "aboutSettings": {
     "advantage1": "Eng sifatli ingredientlar",
@@ -38,7 +38,8 @@
       "category": "hotdog",
       "image": "imgs/Artboard 1 copy 9.png",
       "description": "20 gr ketchup, 1 dona sasiska, 35gr salat, 20gr domashniy mayanez",
-      "badge": "TOP"
+      "badge": "TOP",
+      "stock": 0
     },
     {
       "id": 2,
@@ -46,7 +47,8 @@
       "price": 11000,
       "category": "hotdog",
       "image": "imgs/Artboard 1 copy 9.png",
-      "description": "20 gr ketchup, 2 dona sasiska, 35gr salat, 20gr domashniy mayanez"
+      "description": "20 gr ketchup, 2 dona sasiska, 35gr salat, 20gr domashniy mayanez",
+      "stock": 5
     },
     {
       "id": 3,
@@ -54,7 +56,8 @@
       "price": 12000,
       "category": "hotdog",
       "image": "imgs/Artboard 1 copy 20.png",
-      "description": "20 gr ketchup, kanadskiy 1 dona sasiska, 35gr salat, 20gr domashniy mayanez"
+      "description": "20 gr ketchup, kanadskiy 1 dona sasiska, 35gr salat, 20gr domashniy mayanez",
+      "stock": 0
     },
     {
       "id": 4,
@@ -62,7 +65,8 @@
       "price": 15000,
       "category": "hotdog",
       "image": "imgs/Artboard 1 copy 21.jpg",
-      "description": "20 gr ketchup, kanadskiy 2 dona sasiska, 35gr salat, 20gr domashniy mayanez"
+      "description": "20 gr ketchup, kanadskiy 2 dona sasiska, 35gr salat, 20gr domashniy mayanez",
+      "stock": 3
     },
     {
       "id": 5,
@@ -70,7 +74,8 @@
       "price": 25000,
       "category": "hotdog",
       "image": "imgs/Artboard 1 copy 2.png",
-      "description": "70gr mol go'shti, 40gr sous, 25gr salat, 30gr mayanez"
+      "description": "70gr mol go'shti, 40gr sous, 25gr salat, 30gr mayanez",
+      "stock": 0
     },
     {
       "id": 6,
@@ -78,7 +83,8 @@
       "price": 20000,
       "category": "hotdog",
       "image": "imgs/Artboard 1 copy 11.png",
-      "description": "100gr strips, 25gr ketchup, 15gr bodring, 10gr pomidor, iceberg, firminniy mayonez"
+      "description": "100gr strips, 25gr ketchup, 15gr bodring, 10gr pomidor, iceberg, firminniy mayonez",
+      "stock": 1
     },
     {
       "id": 7,
@@ -86,7 +92,8 @@
       "price": 24000,
       "category": "hotdog",
       "image": "imgs/Artboard 1 copy 11.png",
-      "description": "100gr strips, 25gr ketchup, 15gr bodring, 10gr pomidor, iceberg, firminniy mayonez, cheese"
+      "description": "100gr strips, 25gr ketchup, 15gr bodring, 10gr pomidor, iceberg, firminniy mayonez, cheese",
+      "stock": 9
     },
     {
       "id": 8,
@@ -94,7 +101,8 @@
       "price": 25000,
       "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous"
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous",
+      "stock": 6
     },
     {
       "id": 9,
@@ -102,7 +110,8 @@
       "price": 30000,
       "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, cheese"
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, cheese",
+      "stock": 0
     },
     {
       "id": 10,
@@ -110,7 +119,8 @@
       "price": 30000,
       "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, halapeno"
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, halapeno",
+      "stock": 2
     },
     {
       "id": 11,
@@ -118,7 +128,8 @@
       "price": 37000,
       "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous 2ta katlet"
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous 2ta katlet",
+      "stock": 10
     },
     {
       "id": 12,
@@ -126,7 +137,8 @@
       "price": 45000,
       "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 2ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, 2x cheese"
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 2ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, 2x cheese",
+      "stock": 5
     },
     {
       "id": 13,
@@ -134,7 +146,8 @@
       "price": 23000,
       "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "120gr tovuq go'shti, 15gr bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous"
+      "description": "120gr tovuq go'shti, 15gr bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous",
+      "stock": 0
     },
     {
       "id": 14,
@@ -142,7 +155,8 @@
       "price": 28000,
       "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "120gr tovuq go'shti, 15gr bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous, 1x cheese"
+      "description": "120gr tovuq go'shti, 15gr bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous, 1x cheese",
+      "stock": 2
     },
     {
       "id": 15,
@@ -150,7 +164,8 @@
       "price": 28000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 90gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez"
+      "description": "40gr sous, 90gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez",
+      "stock": 7
     },
     {
       "id": 16,
@@ -158,7 +173,8 @@
       "price": 33000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 120gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez"
+      "description": "40gr sous, 120gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez",
+      "stock": 7
     },
     {
       "id": 17,
@@ -166,7 +182,8 @@
       "price": 28000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 90gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+      "description": "40gr sous, 90gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez, 1x cheese",
+      "stock": 0
     },
     {
       "id": 18,
@@ -174,7 +191,8 @@
       "price": 38000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 120gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+      "description": "40gr sous, 120gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez, 1x cheese",
+      "stock": 1
     },
     {
       "id": 19,
@@ -182,7 +200,8 @@
       "price": 20000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 90gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez"
+      "description": "40gr sous, 90gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez",
+      "stock": 14
     },
     {
       "id": 20,
@@ -190,7 +209,8 @@
       "price": 33000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 90gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+      "description": "40gr sous, 90gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez, 1x cheese",
+      "stock": 8
     },
     {
       "id": 21,
@@ -198,7 +218,8 @@
       "price": 33000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 120gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez"
+      "description": "40gr sous, 120gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez",
+      "stock": 0
     },
     {
       "id": 22,
@@ -206,31 +227,22 @@
       "price": 38000,
       "category": "lavash",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 120gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+      "description": "40gr sous, 120gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez, 1x cheese",
+      "stock": 3
     },
     {
       "id": 23,
-      "name": "Strips 200gr",
+      "name": "Strips",
       "price": 30000,
       "category": "sides",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "40gr sous, 200gr strips"
-    },
-    {
-      "id": 24,
-      "name": "Strips 350gr",
-      "price": 38000,
-      "category": "sides",
-      "image": "imgs/Artboard 1 copy 15.png",
-      "description": "70gr sous, 350gr strips"
-    },
-    {
-      "id": 25,
-      "name": "Strips 1kg",
-      "price": 90000,
-      "category": "sides",
-      "image": "imgs/Artboard 1 copy 15.png",
-      "description": "100gr sous, 1kg strips"
+      "description": "Qovurilgan kartoshka strips",
+      "stock": 50,
+      "sizes": [
+        {"size": "200gr", "price": 30000},
+        {"size": "350gr", "price": 38000},
+        {"size": "1kg", "price": 90000}
+      ]
     },
     {
       "id": 26,
@@ -238,7 +250,54 @@
       "price": 12000,
       "category": "sides",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "100gr fri, 20 ketchup qo'shimcha"
+      "description": "Qovurilgan kartoshka fri",
+      "stock": 30,
+      "sizes": [
+        {"size": "100gr", "price": 12000},
+        {"size": "200gr", "price": 20000},
+        {"size": "300gr", "price": 28000}
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Suv",
+      "price": 3000,
+      "category": "drinks",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "Tabiiy mineral suv",
+      "stock": 50,
+      "sizes": [
+        {"size": "0.5L", "price": 3000},
+        {"size": "1L", "price": 5000},
+        {"size": "2L", "price": 8000}
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Twister Classic",
+      "price": 25000,
+      "category": "twister",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "Tovuq go'shti, sabzavotlar, maxsus sous",
+      "stock": 15
+    },
+    {
+      "id": 29,
+      "name": "Twister Cheese",
+      "price": 30000,
+      "category": "twister",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "Tovuq go'shti, pishloq, sabzavotlar, maxsus sous",
+      "stock": 12
+    },
+    {
+      "id": 30,
+      "name": "Twister Spicy",
+      "price": 28000,
+      "category": "twister",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "Tovuq go'shti, achchiq sous, sabzavotlar",
+      "stock": 8
     }
   ]
 }
