@@ -354,27 +354,7 @@
             <div class="flex space-x-2 mb-6 overflow-x-auto">
                 <button onclick="showAdminTab('menu')"
                     class="admin-tab bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition whitespace-nowrap">
-                    <i class="fas fa-list mr-2"></i>Menyu Boshqaruvi
-                </button>
-                <button onclick="showAdminTab('prices')"
-                    class="admin-tab bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition whitespace-nowrap">
-                    <i class="fas fa-tags mr-2"></i>Narxlarni O'zgartirish
-                </button>
-                <button onclick="showAdminTab('images')"
-                    class="admin-tab bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition whitespace-nowrap">
-                    <i class="fas fa-images mr-2"></i>Rasmlarni O'zgartirish
-                </button>
-                <button onclick="showAdminTab('vip')"
-                    class="admin-tab bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition whitespace-nowrap">
-                    <i class="fas fa-crown mr-2"></i>VIP Aksiya
-                </button>
-                <button onclick="showAdminTab('about')"
-                    class="admin-tab bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition whitespace-nowrap">
-                    <i class="fas fa-info-circle mr-2"></i>Biz Haqimizda
-                </button>
-                <button onclick="showAdminTab('users')"
-                    class="admin-tab bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 transition whitespace-nowrap">
-                    <i class="fas fa-users mr-2"></i>Foydalanuvchilar
+                    <i class="fas fa-list mr-2"></i>Mahsulotlar Boshqaruvi
                 </button>
             </div>
 
@@ -392,197 +372,10 @@
                 </div>
             </div>
 
-            <!-- Prices Management Tab -->
-            <div id="adminPricesTab" class="admin-tab-content hidden">
-                <h4 class="text-xl font-bold mb-4">Narxlarni O'zgartirish</h4>
-                <div id="adminPricesList" class="space-y-4">
-                    <!-- Prices will be loaded here -->
-                </div>
-            </div>
 
-            <!-- Images Management Tab -->
-            <div id="adminImagesTab" class="admin-tab-content hidden">
-                <h4 class="text-xl font-bold mb-4">Rasmlarni O'zgartirish</h4>
-                <div id="adminImagesList" class="space-y-4">
-                    <!-- Images will be loaded here -->
-                </div>
-            </div>
 
-            <!-- VIP Aksiya Management Tab -->
-            <div id="adminVipTab" class="admin-tab-content hidden">
-                <div class="bg-blue-900/30 border border-blue-500/30 rounded-lg p-4 mb-6">
-                    <div class="flex items-center">
-                        <i class="fas fa-info-circle text-blue-400 mr-3 text-xl"></i>
-                        <div>
-                            <h5 class="font-semibold text-blue-300">Ma'lumot saqlash</h5>
-                            <p class="text-sm text-blue-200">Barcha o'zgarishlar avtomatik ravishda JSON faylida saqlanadi. Yangilangan faylni yuklab olish uchun "JSON Faylini Yuklab Olish" tugmasini bosing.</p>
-                        </div>
-                    </div>
-                </div>
-                <h4 class="text-xl font-bold mb-4">VIP Aksiya Boshqaruvi</h4>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-gray-800 rounded-xl p-6">
-                        <h5 class="text-lg font-semibold mb-4 text-yellow-400">🎁 VIP Aksiya Ma'lumotlari</h5>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Aksiya nomi</label>
-                                <input type="text" id="vipTitle" value="🎁 VIP AKSIYA"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-yellow-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Chegirma foizi</label>
-                                <input type="text" id="vipDiscount" value="20 gacha chegirma"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-yellow-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Minimal buyurtma miqdori</label>
-                                <input type="text" id="vipMinOrder" value="100,000 so'mdan ortiq buyurtmaga"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-yellow-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Bepul yetkazib berish</label>
-                                <input type="text" id="vipFreeDelivery" value="3kmgacha dastavka bepul"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-yellow-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Sovg'a matni</label>
-                                <input type="text" id="vipGift" value="Har 3-buyurtmaga bepul desert"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-yellow-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Bepul yetkazib berish sarlavhasi</label>
-                                <input type="text" id="vipFreeDeliveryTitle" value="BEPUL YETKAZIB BERISH"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-yellow-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Sovg'a sarlavhasi</label>
-                                <input type="text" id="vipGiftTitle" value="SOVG'A"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-yellow-500 focus:outline-none">
-                            </div>
-                        </div>
-                        <button onclick="saveVipSettings()"
-                            class="w-full mt-6 bg-gradient-to-r from-yellow-500 to-orange-600 py-3 rounded-lg font-semibold hover:scale-105 transition duration-300">
-                            <i class="fas fa-save mr-2"></i>Saqlash
-                        </button>
-                        <button onclick="saveAppDataToFile()"
-                            class="w-full mt-3 bg-gradient-to-r from-green-500 to-blue-600 py-3 rounded-lg font-semibold hover:scale-105 transition duration-300">
-                            <i class="fas fa-download mr-2"></i>JSON Faylini Yuklab Olish
-                        </button>
-                    </div>
 
-                    <div class="bg-gray-800 rounded-xl p-6">
-                        <h5 class="text-lg font-semibold mb-4 text-green-400">📊 Aksiya Statistikasi</h5>
-                        <div class="space-y-4">
-                            <div class="bg-gray-700 rounded-lg p-4">
-                                <div class="text-2xl font-bold text-yellow-400" id="vipStatsDiscount">20%</div>
-                                <div class="text-sm text-gray-400">Chegirma</div>
-                            </div>
-                            <div class="bg-gray-700 rounded-lg p-4">
-                                <div class="text-2xl font-bold text-green-400" id="vipStatsMinOrder">100,000 so'm</div>
-                                <div class="text-sm text-gray-400">Minimal buyurtma</div>
-                            </div>
-                            <div class="bg-gray-700 rounded-lg p-4">
-                                <div class="text-2xl font-bold text-blue-400" id="vipStatsFreeDelivery">50,000 so'm
-                                </div>
-                                <div class="text-sm text-gray-400">Bepul yetkazib berish</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- About Us Management Tab -->
-            <div id="adminAboutTab" class="admin-tab-content hidden">
-                <div class="bg-blue-900/30 border border-blue-500/30 rounded-lg p-4 mb-6">
-                    <div class="flex items-center">
-                        <i class="fas fa-info-circle text-blue-400 mr-3 text-xl"></i>
-                        <div>
-                            <h5 class="font-semibold text-blue-300">Ma'lumot saqlash</h5>
-                            <p class="text-sm text-blue-200">Barcha o'zgarishlar avtomatik ravishda JSON faylida saqlanadi. Yangilangan faylni yuklab olish uchun "JSON Faylini Yuklab Olish" tugmasini bosing.</p>
-                        </div>
-                    </div>
-                </div>
-                <h4 class="text-xl font-bold mb-4">Biz Haqimizda Boshqaruvi</h4>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-gray-800 rounded-xl p-6">
-                        <h5 class="text-lg font-semibold mb-4 text-blue-400">🏆 Afzalliklar</h5>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">1. Afzallik</label>
-                                <input type="text" id="aboutAdvantage1" value="Eng sifatli ingredientlar"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">2. Afzallik</label>
-                                <input type="text" id="aboutAdvantage2" value="Tez va ishonchli yetkazib berish"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">3. Afzallik</label>
-                                <input type="text" id="aboutAdvantage3" value="24/7 mijozlar xizmati"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">4. Afzallik</label>
-                                <input type="text" id="aboutAdvantage4" value="Maxsus retseptlar va ziravorlar"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-800 rounded-xl p-6">
-                        <h5 class="text-lg font-semibold mb-4 text-purple-400">📈 Natijalar</h5>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Mamnun mijozlar soni</label>
-                                <input type="text" id="aboutCustomers" value="10,000+"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-purple-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Tajriba yillari</label>
-                                <input type="text" id="aboutExperience" value="5 yil"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-purple-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Maqsad matni</label>
-                                <textarea id="aboutGoal" rows="3"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none resize-none">Popays Fast Food - bu faqat taom emas, balki sizning kundalik hayotingizning bir qismi. Biz har bir mijozimizga eng yaxshi taom va xizmatni taqdim etish uchun tinimsiz mehnat qilamiz.</textarea>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 text-gray-300">Qiymatlar matni</label>
-                                <textarea id="aboutValues" rows="3"
-                                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none resize-none">Sifat, ishonchlilik va mijozlar mamnuniyati - bu bizning asosiy tamoyillarimiz. Har bir taom maxsus e'tibor bilan tayyorlanadi va sizning stolga yetkaziladi.</textarea>
-                            </div>
-                        </div>
-                        <button onclick="saveAboutSettings()"
-                            class="w-full mt-6 bg-gradient-to-r from-blue-500 to-purple-600 py-3 rounded-lg font-semibold hover:scale-105 transition duration-300">
-                            <i class="fas fa-save mr-2"></i>Saqlash
-                        </button>
-                        <button onclick="saveAppDataToFile()"
-                            class="w-full mt-3 bg-gradient-to-r from-green-500 to-blue-600 py-3 rounded-lg font-semibold hover:scale-105 transition duration-300">
-                            <i class="fas fa-download mr-2"></i>JSON Faylini Yuklab Olish
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Users Management Tab -->
-            <div id="adminUsersTab" class="admin-tab-content hidden">
-                <h4 class="text-xl font-bold mb-4">Foydalanuvchilar Ro'yxati</h4>
-                <div class="bg-gray-800 rounded-xl p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-lg font-semibold text-green-400">
-                            <i class="fas fa-users mr-2"></i>Ro'yxatdan o'tgan foydalanuvchilar
-                        </div>
-                        <div class="text-sm text-gray-400">
-                            Jami: <span id="totalUsers" class="text-white font-bold">0</span> ta
-                        </div>
-                    </div>
-                    <div id="usersList" class="space-y-3 max-h-96 overflow-y-auto">
-                        <!-- Users will be loaded here -->
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1405,11 +1198,8 @@
                 existingUsers.push(userData);
                 localStorage.setItem('registeredUsers', JSON.stringify(existingUsers));
                 
-                // Also save to JSON data
-                if (window.appData) {
-                    window.appData.registeredUsers = existingUsers;
-                    saveAppDataToFile();
-                }
+                // Save all data to JSON structure
+                saveAllDataToJSON();
             }
 
             // Hide login modal
@@ -1761,17 +1551,8 @@
             adminData.login = '';
             adminData.phone = '';
 
-            // Save to localStorage
-            localStorage.setItem('popaysData', JSON.stringify({
-                admin: adminData,
-                products: products
-            }));
-            
-            // Save to JSON data
-            if (window.appData) {
-                window.appData.admin = adminData;
-                saveAppDataToFile();
-            }
+            // Save all data to JSON structure
+            saveAllDataToJSON();
 
             // Hide admin panel
             document.getElementById('adminPanelModal').classList.add('hidden');
@@ -2041,8 +1822,8 @@
                     // Send data to Telegram
                     tg.sendData(JSON.stringify(orderData));
 
-                    // Send location as Telegram location if coordinates are available
-                    sendLocationToTelegram(userLocation);
+                    // Get current location and send as Telegram location
+                    getCurrentLocationAndSend(userLocation);
 
                     showNotification('Buyurtma Telegram ga yuborildi! 📱', 'success');
 
@@ -2207,29 +1988,66 @@ ${orderDetails}
             }
         }
 
+        // Get current location and send to Telegram
+        function getCurrentLocationAndSend(location) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        const accuracy = position.coords.accuracy;
+                        
+                        // Store coordinates globally
+                        window.userCoordinates = { latitude, longitude, accuracy };
+                        
+                        // Send location to Telegram
+                        sendLocationToTelegram(location, latitude, longitude, accuracy);
+                        
+                        console.log('Lokatsiya olinib Telegram ga yuborildi:', { latitude, longitude, accuracy });
+                    },
+                    function(error) {
+                        console.warn('Lokatsiya olinmadi:', error);
+                        // Still try to send the text location
+                        sendLocationToTelegram(location);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 60000
+                    }
+                );
+            } else {
+                console.log('Geolocation qo\'llab-quvvatlanmaydi');
+                // Still try to send the text location
+                sendLocationToTelegram(location);
+            }
+        }
+
         // Send location to Telegram with map data
-        function sendLocationToTelegram(location) {
+        function sendLocationToTelegram(location, latitude = null, longitude = null, accuracy = null) {
             try {
                 // Check if Telegram Web App is available
                 if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
                     const tg = window.Telegram.WebApp;
 
-                    // Check if we have stored coordinates
-                    if (window.userCoordinates) {
-                        const { latitude, longitude } = window.userCoordinates;
+                    // Use passed coordinates or stored coordinates
+                    const coords = latitude && longitude ? { latitude, longitude, accuracy } : window.userCoordinates;
+                    
+                    if (coords) {
+                        const { latitude: lat, longitude: lng, accuracy: acc } = coords;
 
                         // Create map URL for Google Maps and Yandex Maps
-                        const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
-                        const yandexMapsUrl = `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`;
-                        const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`;
+                        const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                        const yandexMapsUrl = `https://yandex.com/maps/?pt=${lng},${lat}&z=16&l=map`;
+                        const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}&zoom=16`;
 
                         // Send comprehensive location data including map links
                         tg.sendData(JSON.stringify({
                             type: 'location_complete',
                             coordinates: {
-                                latitude: latitude,
-                                longitude: longitude,
-                                accuracy: window.userCoordinates.accuracy
+                                latitude: lat,
+                                longitude: lng,
+                                accuracy: acc
                             },
                             address: location,
                             maps: {
@@ -2242,24 +2060,37 @@ ${orderDetails}
                         }));
 
                         console.log('To\'liq lokatsiya ma\'lumotlari Telegram ga yuborildi:', { 
-                            latitude, 
-                            longitude, 
-                            accuracy: window.userCoordinates.accuracy,
+                            latitude: lat, 
+                            longitude: lng, 
+                            accuracy: acc,
                             maps: { google: googleMapsUrl, yandex: yandexMapsUrl, osm: osmMapsUrl }
                         });
 
-                        // Also try to send as Telegram location if supported
+                        // Send as Telegram location (this is the main location sharing)
                         try {
-                            if (tg.sendLocation) {
-                                tg.sendLocation(latitude, longitude);
-                                console.log('Telegram location yuborildi');
+                            // Use the main Telegram WebApp method to send location
+                            tg.sendData(JSON.stringify({
+                                type: 'location',
+                                latitude: lat,
+                                longitude: lng,
+                                accuracy: acc,
+                                address: location,
+                                timestamp: new Date().toISOString()
+                            }));
+                            
+                            // Also try the direct location method if available
+                            if (typeof tg.sendLocation === 'function') {
+                                tg.sendLocation(lat, lng);
+                                console.log('Telegram location yuborildi (direct method)');
+                            } else {
+                                console.log('Telegram location yuborildi (via sendData)');
                             }
                         } catch (locError) {
                             console.log('Telegram location yuborishda xatolik:', locError);
                         }
 
                         // Send map image if available
-                        sendMapImageToTelegram(latitude, longitude);
+                        sendMapImageToTelegram(lat, lng);
 
                     } else {
                         // Try to extract coordinates from location string
@@ -2495,203 +2326,60 @@ ${orderDetails}
         }
 
         // Load VIP settings
-        function loadVipSettings() {
-            // Try to load from JSON file first, fallback to localStorage
-            let vipData = window.appData?.vipSettings;
-            if (!vipData) {
-                vipData = JSON.parse(localStorage.getItem('vipSettings')) || {
-                    title: '🎁 VIP AKSIYA',
-                    discount: '20 gacha chegirma',
-                    minOrder: '100,000 so\'mdan ortiq buyurtmaga',
-                    freeDelivery: '3kmgacha dastavka bepul',
-                    gift: 'Har 3-buyurtmaga bepul desert',
-                    freeDeliveryTitle: 'BEPUL YETKAZIB BERISH',
-                    giftTitle: 'SOVG\'A'
-                };
-            }
-
-            document.getElementById('vipTitle').value = vipData.title;
-            document.getElementById('vipDiscount').value = vipData.discount;
-            document.getElementById('vipMinOrder').value = vipData.minOrder;
-            document.getElementById('vipFreeDelivery').value = vipData.freeDelivery;
-            document.getElementById('vipGift').value = vipData.gift;
-            document.getElementById('vipFreeDeliveryTitle').value = vipData.freeDeliveryTitle;
-            document.getElementById('vipGiftTitle').value = vipData.giftTitle;
-
-            updateVipStats();
-        }
 
         // Save VIP settings
-        function saveVipSettings() {
-            const vipData = {
-                title: document.getElementById('vipTitle').value,
-                discount: document.getElementById('vipDiscount').value,
-                minOrder: document.getElementById('vipMinOrder').value,
-                freeDelivery: document.getElementById('vipFreeDelivery').value,
-                gift: document.getElementById('vipGift').value,
-                freeDeliveryTitle: document.getElementById('vipFreeDeliveryTitle').value,
-                giftTitle: document.getElementById('vipGiftTitle').value
-            };
 
-            // Save to localStorage
-            localStorage.setItem('vipSettings', JSON.stringify(vipData));
-            
-            // Update global vipData variable
-            window.vipData = vipData;
-            
-            // Trigger real-time update
-            triggerRealTimeUpdate();
-            
-            // Save to JSON data
-            if (window.appData) {
-                window.appData.vipSettings = vipData;
-                saveAppDataToFile();
-            }
-            
-            updateVipStats();
-
-            // Update page content
-            document.getElementById('vipSectionTitle').textContent = vipData.title;
-            document.getElementById('vipDiscountText').textContent = vipData.discount;
-            document.getElementById('vipMinOrderText').textContent = vipData.minOrder;
-            document.getElementById('vipFreeDeliveryText').textContent = vipData.freeDelivery;
-            document.getElementById('vipFreeDeliveryTitle').textContent = vipData.freeDeliveryTitle;
-            document.getElementById('vipGiftText').textContent = vipData.gift;
-            document.getElementById('vipGiftTitle').textContent = vipData.giftTitle;
-
-            showNotification('VIP aksiya sozlamalari saqlandi! 🎁', 'success');
-        }
-
-        // Update VIP stats
-        function updateVipStats() {
-            let vipData = window.appData?.vipSettings;
-            if (!vipData) {
-                vipData = JSON.parse(localStorage.getItem('vipSettings')) || {};
-            }
-            document.getElementById('vipStatsDiscount').textContent = vipData.discount || '20 gacha chegirma';
-            document.getElementById('vipStatsMinOrder').textContent = vipData.minOrder || '100,000 so\'mdan ortiq buyurtmaga';
-            document.getElementById('vipStatsFreeDelivery').textContent = vipData.freeDelivery || '3kmgacha dastavka bepul';
-        }
 
         // Load About settings
-        function loadAboutSettings() {
-            // Try to load from JSON file first, fallback to localStorage
-            let aboutData = window.appData?.aboutSettings;
-            if (!aboutData) {
-                aboutData = JSON.parse(localStorage.getItem('aboutSettings')) || {
-                    advantage1: 'Eng sifatli ingredientlar',
-                    advantage2: 'Tez va ishonchli yetkazib berish',
-                    advantage3: '24/7 mijozlar xizmati',
-                    advantage4: 'Maxsus retseptlar va ziravorlar',
-                    customers: '10,000+',
-                    experience: '5 yil',
-                    goal: 'Popays Fast Food - bu faqat taom emas, balki sizning kundalik hayotingizning bir qismi. Biz har bir mijozimizga eng yaxshi taom va xizmatni taqdim etish uchun tinimsiz mehnat qilamiz.',
-                    values: 'Sifat, ishonchlilik va mijozlar mamnuniyati - bu bizning asosiy tamoyillarimiz. Har bir taom maxsus e\'tibor bilan tayyorlanadi va sizning stolga yetkaziladi.'
-                };
-            }
-
-            document.getElementById('aboutAdvantage1').value = aboutData.advantage1;
-            document.getElementById('aboutAdvantage2').value = aboutData.advantage2;
-            document.getElementById('aboutAdvantage3').value = aboutData.advantage3;
-            document.getElementById('aboutAdvantage4').value = aboutData.advantage4;
-            document.getElementById('aboutCustomers').value = aboutData.customers;
-            document.getElementById('aboutExperience').value = aboutData.experience;
-            document.getElementById('aboutGoal').value = aboutData.goal;
-            document.getElementById('aboutValues').value = aboutData.values;
-        }
 
         // Save About settings
-        function saveAboutSettings() {
-            const aboutData = {
-                advantage1: document.getElementById('aboutAdvantage1').value,
-                advantage2: document.getElementById('aboutAdvantage2').value,
-                advantage3: document.getElementById('aboutAdvantage3').value,
-                advantage4: document.getElementById('aboutAdvantage4').value,
-                customers: document.getElementById('aboutCustomers').value,
-                experience: document.getElementById('aboutExperience').value,
-                goal: document.getElementById('aboutGoal').value,
-                values: document.getElementById('aboutValues').value
-            };
-
-            // Save to localStorage
-            localStorage.setItem('aboutSettings', JSON.stringify(aboutData));
-            
-            // Update global aboutData variable
-            window.aboutData = aboutData;
-            
-            // Trigger real-time update
-            triggerRealTimeUpdate();
-            
-            // Save to JSON data
-            if (window.appData) {
-                window.appData.aboutSettings = aboutData;
-                saveAppDataToFile();
-            }
-
-            // Update page content
-            document.getElementById('aboutAdvantage1Text').textContent = aboutData.advantage1;
-            document.getElementById('aboutAdvantage2Text').textContent = aboutData.advantage2;
-            document.getElementById('aboutAdvantage3Text').textContent = aboutData.advantage3;
-            document.getElementById('aboutAdvantage4Text').textContent = aboutData.advantage4;
-            document.getElementById('aboutCustomersText').textContent = aboutData.customers;
-            document.getElementById('aboutExperienceText').textContent = aboutData.experience;
-            document.getElementById('aboutGoalText').textContent = aboutData.goal;
-            document.getElementById('aboutValuesText').textContent = aboutData.values;
-
-            showNotification('Biz haqimizda ma\'lumotlari saqlandi! 📝', 'success');
-        }
 
         // Load users list
-        function loadUsersList() {
-            // Try to load from JSON file first, fallback to localStorage
-            let users = window.appData?.registeredUsers;
-            if (!users) {
-                users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-            }
-            
-            const usersList = document.getElementById('usersList');
-            const totalUsers = document.getElementById('totalUsers');
-
-            totalUsers.textContent = users.length;
-
-            if (users.length === 0) {
-                usersList.innerHTML = `
-                    <div class="text-center text-gray-400 py-8">
-                        <i class="fas fa-users text-4xl mb-4"></i>
-                        <p>Hali hech qanday foydalanuvchi ro'yxatdan o'tmagan</p>
-                    </div>
-                `;
-            } else {
-                usersList.innerHTML = users.map((user, index) => `
-                    <div class="bg-gray-700 rounded-lg p-4 hover:bg-gray-600 transition">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-                                    ${user.name.charAt(0).toUpperCase()}
-                                </div>
-                                <div>
-                                    <div class="font-semibold text-white">${user.name}</div>
-                                    <div class="text-sm text-gray-400">${user.phone}</div>
-                                    <div class="text-xs text-gray-500">${user.location}</div>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-xs text-gray-400">ID: ${index + 1}</div>
-                                <div class="text-xs text-gray-400">${new Date(user.timestamp).toLocaleDateString('uz-UZ')}</div>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
 
         // Load dynamic content from localStorage
         function loadDynamicContent() {
-            // Load VIP settings
-            let vipData = window.appData?.vipSettings;
-            if (!vipData) {
-                vipData = JSON.parse(localStorage.getItem('vipSettings')) || {};
+            // Load all data from JSON file
+            if (window.appData) {
+                // Load products
+                if (window.appData.products) {
+                    products = window.appData.products;
+                    console.log('Products loaded from JSON file:', products);
+                    renderProducts();
+                }
+
+                // Load admin data
+                if (window.appData.admin) {
+                    adminData = window.appData.admin;
+                    console.log('Admin data loaded from JSON file:', adminData);
+                }
+
+                // Load registered users
+                if (window.appData.registeredUsers) {
+                    localStorage.setItem('registeredUsers', JSON.stringify(window.appData.registeredUsers));
+                    console.log('Registered users loaded from JSON file:', window.appData.registeredUsers);
+                }
+
+                // Load map data
+                if (window.appData.mapData) {
+                    localStorage.setItem('popaysMapData', JSON.stringify(window.appData.mapData));
+                    console.log('Map data loaded from JSON file:', window.appData.mapData);
+                }
+
+                // Load VIP settings
+                if (window.appData.vipSettings) {
+                    localStorage.setItem('vipSettings', JSON.stringify(window.appData.vipSettings));
+                    console.log('VIP settings loaded from JSON file:', window.appData.vipSettings);
+                }
+
+                // Load About settings
+                if (window.appData.aboutSettings) {
+                    localStorage.setItem('aboutSettings', JSON.stringify(window.appData.aboutSettings));
+                    console.log('About settings loaded from JSON file:', window.appData.aboutSettings);
+                }
             }
+
+            // Update VIP section display
+            let vipData = window.appData?.vipSettings || JSON.parse(localStorage.getItem('vipSettings')) || {};
             if (vipData.title) {
                 document.getElementById('vipSectionTitle').textContent = vipData.title;
                 document.getElementById('vipDiscountText').textContent = vipData.discount || '20 gacha chegirma';
@@ -2755,6 +2443,42 @@ ${orderDetails}
             
             URL.revokeObjectURL(url);
             console.log('App data exported to file');
+        }
+
+        // Save all data to JSON file structure
+        function saveAllDataToJSON() {
+            // Ensure window.appData exists
+            if (!window.appData) {
+                window.appData = {};
+            }
+
+            // Update all data in appData
+            window.appData.products = products;
+            window.appData.admin = adminData;
+            window.appData.registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+            window.appData.mapData = JSON.parse(localStorage.getItem('popaysMapData')) || {
+                description: "Mijozlarning xarita ma'lumotlari va lokatsiyalari",
+                entries: [],
+                lastUpdated: "",
+                totalEntries: 0
+            };
+
+            // Save VIP settings if they exist
+            const vipSettings = JSON.parse(localStorage.getItem('vipSettings'));
+            if (vipSettings) {
+                window.appData.vipSettings = vipSettings;
+            }
+
+            // Save About settings if they exist
+            const aboutSettings = JSON.parse(localStorage.getItem('aboutSettings'));
+            if (aboutSettings) {
+                window.appData.aboutSettings = aboutSettings;
+            }
+
+            // Save to localStorage as backup
+            localStorage.setItem('popaysData', JSON.stringify(window.appData));
+            
+            console.log('All data saved to JSON structure:', window.appData);
         }
 
         // Initialize Telegram Web App
@@ -3053,17 +2777,8 @@ ${orderDetails}
                 adminData.login = adminLogin;
                 adminData.phone = adminPhone;
 
-                // Save to localStorage
-                localStorage.setItem('popaysData', JSON.stringify({
-                    admin: adminData,
-                    products: products
-                }));
-                
-                // Save to JSON data
-                if (window.appData) {
-                    window.appData.admin = adminData;
-                    saveAppDataToFile();
-                }
+                // Save all data to JSON structure
+                saveAllDataToJSON();
 
                 toggleLogin();  // Close login modal
                 showAdminButton();
@@ -3131,11 +2846,6 @@ ${orderDetails}
 
         function loadAdminData() {
             loadAdminProducts();
-            loadAdminPrices();
-            loadAdminImages();
-            loadVipSettings();
-            loadAboutSettings();
-            loadUsersList();
 
             // Update page content with current settings
             loadDynamicContent();
@@ -3165,42 +2875,6 @@ ${orderDetails}
             `).join('');
         }
 
-        function loadAdminPrices() {
-            const pricesList = document.getElementById('adminPricesList');
-            pricesList.innerHTML = products.map(product => `
-                <div class="bg-gray-800 rounded-xl p-4 flex justify-between items-center">
-                    <div>
-                        <h4 class="font-semibold">${product.name}</h4>
-                        <p class="text-gray-400">${product.category}</p>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <input type="number" value="${product.price}" onchange="updateProductPrice(${product.id}, this.value)" class="w-24 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-orange-500 focus:outline-none">
-                        <span class="text-gray-400">so'm</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function loadAdminImages() {
-            const imagesList = document.getElementById('adminImagesList');
-            imagesList.innerHTML = products.map(product => `
-                <div class="bg-gray-800 rounded-xl p-4 flex justify-between items-center">
-                    <div class="flex items-center space-x-4">
-                        <img src="${product.image}" alt="${product.name}" class="w-16 h-16 object-cover rounded-lg">
-                        <div>
-                            <h4 class="font-semibold">${product.name}</h4>
-                            <p class="text-gray-400">${product.image}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <input type="file" accept="image/*" onchange="updateProductImage(${product.id}, this)" class="bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white focus:border-orange-500 focus:outline-none">
-                        <button onclick="previewProductImage(${product.id})" class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg transition">
-                            <i class="fas fa-eye mr-2"></i>Ko'rish
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
 
         function showAddProductForm() {
             document.getElementById('addProductModal').classList.remove('hidden');
@@ -3379,31 +3053,25 @@ ${orderDetails}
 
         // Save data to localStorage and sessionStorage
         function saveDataToJSON() {
-            const dataToSave = {
-                admin: adminData,
-                products: products
-            };
-
-            // Save to localStorage for persistence
-            localStorage.setItem('popaysData', JSON.stringify(dataToSave));
-
-            // Save to sessionStorage for current session
-            sessionStorage.setItem('popaysData', JSON.stringify(dataToSave));
-
-            console.log('Ma\'lumotlar localStorage va sessionStorage ga saqlandi');
+            // Save all data to JSON structure
+            saveAllDataToJSON();
+            
+            console.log('All data saved to JSON structure');
 
             // Also create downloadable JSON file
-            const dataStr = JSON.stringify(dataToSave, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
+            if (window.appData) {
+                const dataStr = JSON.stringify(window.appData, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(dataBlob);
 
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'popaysadmin.json';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'popaysadmin.json';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
         }
 
         // Check URL parameters for admin access - O'CHIRILDI
