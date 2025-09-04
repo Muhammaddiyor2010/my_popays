@@ -33,53 +33,212 @@
   "products": [
     {
       "id": 1,
-      "name": "Cheese Burger Deluxe",
-      "price": 35000,
-      "category": "burger",
+      "name": "Oddiy HotDog",
+      "price": 8000,
+      "category": "hotdog",
       "image": "imgs/Artboard 1 copy 9.png",
-      "description": "Ikki qavatli mol go'shti, pishloq, yangi sabzavotlar",
+      "description": "20 gr ketchup, 1 dona sasiska, 35gr salat, 20gr domashniy mayanez",
       "badge": "TOP"
     },
     {
       "id": 2,
-      "name": "Klassik Lavash",
-      "price": 28000,
-      "category": "lavash",
-      "image": "imgs/Artboard 1 copy 20.png",
-      "description": "An'anaviy lavash, mol go'shti, sabzavotlar"
+      "name": "HotDog dvaynoy",
+      "price": 11000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 9.png",
+      "description": "20 gr ketchup, 2 dona sasiska, 35gr salat, 20gr domashniy mayanez"
     },
     {
       "id": 3,
-      "name": "Burger Combo",
-      "price": 55000,
-      "category": "combo",
-      "image": "imgs/Artboard 1 copy 21.jpg",
-      "description": "Burger + kartoshka + ichimlik",
-      "badge": "VIP"
+      "name": "HotDog kanatskiy",
+      "price": 12000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 20.png",
+      "description": "20 gr ketchup, kanadskiy 1 dona sasiska, 35gr salat, 20gr domashniy mayanez"
     },
     {
       "id": 4,
-      "name": "Coca-Cola",
-      "price": 12000,
-      "category": "drinks",
-      "image": "imgs/Artboard 1 copy 2.png",
-      "description": "0.5L"
+      "name": "HotDog kanatskiy dvaynoy",
+      "price": 15000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 21.jpg",
+      "description": "20 gr ketchup, kanadskiy 2 dona sasiska, 35gr salat, 20gr domashniy mayanez"
     },
     {
       "id": 5,
-      "name": "Klassik Hot Dog",
+      "name": "Go'shtli HotDog",
       "price": 25000,
       "category": "hotdog",
-      "image": "imgs/Artboard 1 copy 11.png",
-      "description": "Sosiska, sous, sabzavotlar" 
+      "image": "imgs/Artboard 1 copy 2.png",
+      "description": "70gr mol go'shti, 40gr sous, 25gr salat, 30gr mayanez"
     },
     {
       "id": 6,
-      "name": "Pepperoni Pizza",
-      "price": 55000,
-      "category": "pizza",
+      "name": "Longer",
+      "price": 20000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 11.png",
+      "description": "100gr strips, 25gr ketchup, 15gr bodring, 10gr pomidor, iceberg, firminniy mayonez"
+    },
+    {
+      "id": 7,
+      "name": "Longer Cheese",
+      "price": 24000,
+      "category": "hotdog",
+      "image": "imgs/Artboard 1 copy 11.png",
+      "description": "100gr strips, 25gr ketchup, 15gr bodring, 10gr pomidor, iceberg, firminniy mayonez, cheese"
+    },
+    {
+      "id": 8,
+      "name": "BBQ burger",
+      "price": 25000,
+      "category": "burger",
       "image": "imgs/Artboard 1 copy 15.png",
-      "description": "30cm, pepperoni, mozzarella pishlog'i"
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous"
+    },
+    {
+      "id": 9,
+      "name": "Cheese burger",
+      "price": 30000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, cheese"
+    },
+    {
+      "id": 10,
+      "name": "BBQ burger halapeno",
+      "price": 30000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 1ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, halapeno"
+    },
+    {
+      "id": 11,
+      "name": "BBQ double burger",
+      "price": 37000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous 2ta katlet"
+    },
+    {
+      "id": 12,
+      "name": "Double Cheese burger",
+      "price": 45000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "20gr ketchup, 10gr piyoz, 15gr tuzlangan bodring, 2ta katlet 10gr pomidor, 10gr iceberg, 25gr firminniy sous, 2x cheese"
+    },
+    {
+      "id": 13,
+      "name": "Chicken Burger",
+      "price": 23000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "120gr tovuq go'shti, 15gr bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous"
+    },
+    {
+      "id": 14,
+      "name": "Chicken cheese",
+      "price": 28000,
+      "category": "burger",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "120gr tovuq go'shti, 15gr bodring, 10gr pomidor, 10gr iceberg, 25gr firminniy sous, 1x cheese"
+    },
+    {
+      "id": 15,
+      "name": "Oddiy Lavash",
+      "price": 28000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 90gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez"
+    },
+    {
+      "id": 16,
+      "name": "Extra Lavash",
+      "price": 33000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 120gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez"
+    },
+    {
+      "id": 17,
+      "name": "Cheese Lavash",
+      "price": 28000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 90gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+    },
+    {
+      "id": 18,
+      "name": "Extra cheese Lavash",
+      "price": 38000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 120gr go'sht, 20 bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+    },
+    {
+      "id": 19,
+      "name": "Shaurma",
+      "price": 20000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 90gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez"
+    },
+    {
+      "id": 20,
+      "name": "Shaurma cheese",
+      "price": 33000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 90gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+    },
+    {
+      "id": 21,
+      "name": "Shaurma extra",
+      "price": 33000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 120gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez"
+    },
+    {
+      "id": 22,
+      "name": "Shaurma extra cheese",
+      "price": 38000,
+      "category": "lavash",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 120gr go'sht, 20 gr bodring, 20gr pomidor, 30gr mayanez, 1x cheese"
+    },
+    {
+      "id": 23,
+      "name": "Strips 200gr",
+      "price": 30000,
+      "category": "sides",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "40gr sous, 200gr strips"
+    },
+    {
+      "id": 24,
+      "name": "Strips 350gr",
+      "price": 38000,
+      "category": "sides",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "70gr sous, 350gr strips"
+    },
+    {
+      "id": 25,
+      "name": "Strips 1kg",
+      "price": 90000,
+      "category": "sides",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "100gr sous, 1kg strips"
+    },
+    {
+      "id": 26,
+      "name": "Fri",
+      "price": 12000,
+      "category": "sides",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "100gr fri, 20 ketchup qo'shimcha"
     }
   ]
 }
