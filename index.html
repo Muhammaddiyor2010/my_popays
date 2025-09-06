@@ -2169,11 +2169,18 @@
         }
 
         // Send message to sendxabarbolib bot
-        function sendToSendXabarBolibBot(message) {
+        function sendToPopaysBot(message, dataType = 'order') {
             try {
-                // Sendxabarbolib bot API endpoint
-                const botToken = 'YOUR_SENDXABARBOLIB_BOT_TOKEN'; // Replace with actual bot token
-                const chatId = 'YOUR_CHAT_ID'; // Replace with actual chat ID
+                // Popays bot configuration
+                // Bot token va chat ID ni quyidagicha o'zgartiring:
+                const botToken = 'YOUR_POPAYS_BOT_TOKEN'; // @BotFather dan olingan bot token
+                const chatId = 'YOUR_ADMIN_CHAT_ID'; // Admin chat ID
+                
+                // Agar bot token yoki chat ID o'rnatilmagan bo'lsa, xabarni yubormaslik
+                if (botToken === 'YOUR_POPAYS_BOT_TOKEN' || chatId === 'YOUR_ADMIN_CHAT_ID') {
+                    console.log('Popays bot konfiguratsiyasi to\'liq emas. Bot token va chat ID ni o\'rnating.');
+                    return;
+                }
                 
                 const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
                 
@@ -2199,7 +2206,7 @@
                 });
                 
             } catch (error) {
-                console.error('Error in sendToSendXabarBolibBot:', error);
+                console.error('Error in sendToPopaysBot:', error);
             }
         }
 
@@ -2300,12 +2307,12 @@ ${orderDetails}
 
 ⏰ <b>Vaqt:</b> ${new Date().toLocaleString('uz-UZ')}`;
 
-                    sendToSendXabarBolibBot(sendXabarBolibMessage);
+                    sendToPopaysBot(sendXabarBolibMessage);
 
                     // Get current location and send as Telegram location
                     getCurrentLocationAndSend(userLocation);
 
-                    showNotification('Buyurtma Telegram va sendxabarbolib botga yuborildi! 📱', 'success');
+                    showNotification('Buyurtma Telegram va Popays botga yuborildi! 📱', 'success');
 
                     // Clear cart after sending
                     cart = [];
@@ -2373,7 +2380,7 @@ ${orderDetails}
 
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
-                    sendToSendXabarBolibBot(sendXabarBolibMessage);
+                    sendToPopaysBot(sendXabarBolibMessage);
 
                     // Add map links to order message if coordinates are available
                     let orderMapLinksText = '';
@@ -2411,7 +2418,7 @@ ${orderDetails}
                     alert(orderMessage);
 
                     // Send to sendxabarbolib bot
-                    sendToSendXabarBolibBot(sendXabarBolibMessage);
+                    sendToPopaysBot(sendXabarBolibMessage);
 
                     // Show Telegram message for manual copy
                     const modal = document.createElement('div');
@@ -3682,9 +3689,9 @@ ${contactMessage}
 
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
-                    sendToSendXabarBolibBot(sendXabarBolibContactMessage);
+                    sendToPopaysBot(sendXabarBolibContactMessage, 'contact');
 
-                    showNotification('Xabaringiz Telegram va sendxabarbolib botga yuborildi! 📱', 'success');
+                    showNotification('Xabaringiz Telegram va Popays botga yuborildi! 📱', 'success');
 
                     // Reset form
                     document.getElementById('contactForm').reset();
@@ -3718,8 +3725,8 @@ ${contactMessage}
 
                     alert(contactSuccessMessage);
 
-                    // Send to sendxabarbolib bot
-                    sendToSendXabarBolibBot(sendXabarBolibContactMessage);
+                    // Send to Popays bot
+                    sendToPopaysBot(sendXabarBolibContactMessage, 'contact');
 
                     // Show Telegram message for manual copy
                     const modal = document.createElement('div');
@@ -3784,7 +3791,7 @@ ${contactMessage}
 
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
-                sendToSendXabarBolibBot(sendXabarBolibContactMessage);
+                sendToPopaysBot(sendXabarBolibContactMessage, 'contact');
 
                 // Reset form
                 document.getElementById('contactForm').reset();
