@@ -3668,7 +3668,23 @@ ${orderDetails}
                     // Send data to Telegram
                     tg.sendData(JSON.stringify(contactData));
 
-                    showNotification('Xabaringiz Telegram ga yuborildi! 📱', 'success');
+                    // Send to sendxabarbolib bot
+                    const sendXabarBolibContactMessage = `✉️ <b>POPAYS FAST FOOD - YANGI XABAR</b>
+
+👤 <b>Mijoz:</b> ${contactName}
+📞 <b>Telefon:</b> ${contactPhone}
+📧 <b>Email:</b> ${contactEmail || 'Kiritilmagan'}
+
+💬 <b>Xabar:</b>
+${contactMessage}
+
+⏰ <b>Vaqt:</b> ${new Date().toLocaleString('uz-UZ')}
+
+🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
+
+                    sendToSendXabarBolibBot(sendXabarBolibContactMessage);
+
+                    showNotification('Xabaringiz Telegram va sendxabarbolib botga yuborildi! 📱', 'success');
 
                     // Reset form
                     document.getElementById('contactForm').reset();
@@ -3701,6 +3717,9 @@ ${contactMessage}
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
                     alert(contactSuccessMessage);
+
+                    // Send to sendxabarbolib bot
+                    sendToSendXabarBolibBot(sendXabarBolibContactMessage);
 
                     // Show Telegram message for manual copy
                     const modal = document.createElement('div');
@@ -3750,6 +3769,22 @@ ${contactMessage}
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
                 alert(contactSuccessMessage);
+
+                // Send to sendxabarbolib bot even in error case
+                const sendXabarBolibContactMessage = `✉️ <b>POPAYS FAST FOOD - YANGI XABAR</b>
+
+👤 <b>Mijoz:</b> ${contactName}
+📞 <b>Telefon:</b> ${contactPhone}
+📧 <b>Email:</b> ${contactEmail || 'Kiritilmagan'}
+
+💬 <b>Xabar:</b>
+${contactMessage}
+
+⏰ <b>Vaqt:</b> ${new Date().toLocaleString('uz-UZ')}
+
+🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
+
+                sendToSendXabarBolibBot(sendXabarBolibContactMessage);
 
                 // Reset form
                 document.getElementById('contactForm').reset();
