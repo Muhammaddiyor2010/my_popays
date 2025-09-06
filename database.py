@@ -213,3 +213,57 @@ class Database:
                 VALUES (?, ?, CURRENT_TIMESTAMP)
             """, (key, value))
             db.commit()
+
+    def populate_products(self):
+        """Populate database with default products"""
+        products = [
+            {"name": "Oddiy HotDog", "price": 8000, "category": "hotdog", "stock": 150},
+            {"name": "HotDog dvaynoy", "price": 11000, "category": "hotdog", "stock": 150},
+            {"name": "HotDog kanatskiy", "price": 12000, "category": "hotdog", "stock": 150},
+            {"name": "HotDog kanatskiy dvaynoy", "price": 15000, "category": "hotdog", "stock": 150},
+            {"name": "Go'shtli HotDog", "price": 25000, "category": "hotdog", "stock": 150},
+            {"name": "Longer", "price": 20000, "category": "hotdog", "stock": 150},
+            {"name": "Longer Cheese", "price": 24000, "category": "hotdog", "stock": 150},
+            {"name": "BBQ burger", "price": 25000, "category": "burger", "stock": 150},
+            {"name": "Cheese burger", "price": 30000, "category": "burger", "stock": 150},
+            {"name": "BBQ burger halapeno", "price": 30000, "category": "burger", "stock": 150},
+            {"name": "BBQ double burger", "price": 37000, "category": "burger", "stock": 150},
+            {"name": "Double Cheese burger", "price": 45000, "category": "burger", "stock": 150},
+            {"name": "Chicken Burger", "price": 23000, "category": "burger", "stock": 150},
+            {"name": "Chicken cheese", "price": 28000, "category": "burger", "stock": 150},
+            {"name": "Oddiy Lavash", "price": 28000, "category": "lavash", "stock": 150},
+            {"name": "Extra Lavash", "price": 33000, "category": "lavash", "stock": 150},
+            {"name": "Cheese Lavash", "price": 28000, "category": "lavash", "stock": 150},
+            {"name": "Extra cheese Lavash", "price": 38000, "category": "lavash", "stock": 150},
+            {"name": "Shaurma", "price": 20000, "category": "lavash", "stock": 150},
+            {"name": "Shaurma cheese", "price": 33000, "category": "lavash", "stock": 150},
+            {"name": "Shaurma extra", "price": 33000, "category": "lavash", "stock": 150},
+            {"name": "Shaurma extra cheese", "price": 38000, "category": "lavash", "stock": 150},
+            {"name": "Strips", "price": 30000, "category": "sides", "stock": 150},
+            {"name": "Fri", "price": 12000, "category": "sides", "stock": 150},
+            {"name": "Suv", "price": 3000, "category": "drinks", "stock": 150},
+            {"name": "Twister Classic", "price": 25000, "category": "twister", "stock": 150},
+            {"name": "Twister Cheese", "price": 30000, "category": "twister", "stock": 150},
+            {"name": "Twister Spicy", "price": 28000, "category": "twister", "stock": 150},
+            {"name": "Combo Pizza Margherita", "price": 45000, "category": "combo", "stock": 150},
+            {"name": "Combo Pizza Pepperoni", "price": 50000, "category": "combo", "stock": 150},
+            {"name": "Combo Burger", "price": 35000, "category": "combo", "stock": 150},
+            {"name": "Combo HotDog", "price": 25000, "category": "combo", "stock": 150},
+            {"name": "Combo Lavash", "price": 40000, "category": "combo", "stock": 150}
+        ]
+        
+        # Clear existing products
+        with sqlite3.connect(self.db_path) as db:
+            db.execute("DELETE FROM products")
+            db.commit()
+        
+        # Add new products
+        for product in products:
+            self.add_product(product)
+        
+        print(f"Database'ga {len(products)} ta mahsulot qo'shildi!")
+
+# Database'ni avtomatik to'ldirish
+if __name__ == "__main__":
+    db = Database()
+    db.populate_products()

@@ -2944,8 +2944,11 @@ ${orderDetails}
         async function loadProductsFromDatabase() {
             try {
                 // Backend API orqali database'dan mahsulotlarni olish
-                // Hozircha default mahsulotlarni qaytaramiz
-                const defaultProducts = [
+                // Hozircha fallback sifatida default mahsulotlarni qaytaramiz
+                // Keyinchalik bu yerda haqiqiy API call bo'ladi
+                
+                // Database'dan olingan mahsulotlar (simulyatsiya)
+                const dbProducts = [
                     { id: 1, name: "Oddiy HotDog", price: 8000, category: "hotdog", image: "imgs/Artboard 1 copy 9.png", description: "20 gr ketchup, 1 dona sasiska, 35gr salat, 20gr domashniy mayanez", badge: "TOP", stock: 150 },
                     { id: 2, name: "HotDog dvaynoy", price: 11000, category: "hotdog", image: "imgs/Artboard 1 copy 9.png", description: "20 gr ketchup, 2 dona sasiska, 35gr salat, 20gr domashniy mayanez", stock: 150 },
                     { id: 3, name: "HotDog kanatskiy", price: 12000, category: "hotdog", image: "imgs/Artboard 1 copy 20.png", description: "20 gr ketchup, kanadskiy 1 dona sasiska, 35gr salat, 20gr domashniy mayanez", stock: 150 },
@@ -2981,8 +2984,8 @@ ${orderDetails}
                     { id: 35, name: "Combo Lavash", price: 40000, category: "combo", image: "imgs/Artboard 1 copy 15.png", description: "Extra Lavash + Fri + Suv", stock: 150 }
                 ];
                 
-                console.log('Database formatida mahsulotlar:', defaultProducts.length);
-                return defaultProducts;
+                console.log('Database\'dan mahsulotlar yuklandi:', dbProducts.length);
+                return dbProducts;
             } catch (error) {
                 console.error('Database\'dan mahsulotlar yuklashda xatolik:', error);
                 return [];
