@@ -298,6 +298,51 @@
       "image": "imgs/Artboard 1 copy 15.png",
       "description": "Tovuq go'shti, achchiq sous, sabzavotlar",
       "stock": 8
+    },
+    {
+      "id": 31,
+      "name": "Combo Pizza Margherita",
+      "price": 45000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "Pizza Margherita + Fri + Suv",
+      "stock": 15
+    },
+    {
+      "id": 32,
+      "name": "Combo Pizza Pepperoni",
+      "price": 50000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "Pizza Pepperoni + Fri + Suv",
+      "stock": 12
+    },
+    {
+      "id": 33,
+      "name": "Combo Burger",
+      "price": 35000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "BBQ Burger + Fri + Suv",
+      "stock": 20
+    },
+    {
+      "id": 34,
+      "name": "Combo HotDog",
+      "price": 25000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "HotDog dvaynoy + Fri + Suv",
+      "stock": 18
+    },
+    {
+      "id": 35,
+      "name": "Combo Lavash",
+      "price": 40000,
+      "category": "combo",
+      "image": "imgs/Artboard 1 copy 15.png",
+      "description": "Extra Lavash + Fri + Suv",
+      "stock": 16
     }
   ]
 }

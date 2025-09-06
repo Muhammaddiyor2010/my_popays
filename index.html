@@ -460,6 +460,20 @@
                     </span>
                 </div>
             </div>
+
+            <!-- Combo -->
+            <div id="hiddenCategory6" class="hidden bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 hover:scale-105 transition duration-300 border border-gray-700 hover:border-orange-500 relative group cursor-pointer"
+                onclick="openCategoryPage('combo')">
+                <div class="text-8xl mb-6 text-center group-hover:scale-110 transition duration-300">🍽️</div>
+                <h3 class="text-2xl font-bold mb-4 text-center text-orange-400">Combo</h3>
+                <p class="text-gray-400 text-center mb-6">Taom + Fri + Ichimlik</p>
+                <div class="text-center">
+                    <span
+                        class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                        Ko'rish <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
+                </div>
+            </div>
         </div>
 
         <!-- Show All Categories Button -->
@@ -1766,7 +1780,7 @@
         // Show all categories
         function showAllCategories() {
             // Show all hidden categories
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 6; i++) {
                 const hiddenCategory = document.getElementById(`hiddenCategory${i}`);
                 if (hiddenCategory) {
                     hiddenCategory.classList.remove('hidden');
@@ -1895,6 +1909,12 @@
                 return;
             }
 
+            // Check if combo product is being added to Derizli branch
+            if (product.category === 'combo' && selectedBranch === 'derizli') {
+                showNotification('Hozircha Derizli filialida combolar yo\'q!', 'warning');
+                return;
+            }
+
             const productWithSize = {
                 ...product,
                 price: price,
@@ -1926,6 +1946,12 @@
             // Check if product is out of stock
             if (product.stock === 0) {
                 showNotification('Bu mahsulot tugagan!', 'error');
+                return;
+            }
+
+            // Check if combo product is being added to Derizli branch
+            if (product.category === 'combo' && selectedBranch === 'derizli') {
+                showNotification('Hozircha Derizli filialida combolar yo\'q!', 'warning');
                 return;
             }
             
