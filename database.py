@@ -18,6 +18,7 @@ class Database:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL,
                     price INTEGER NOT NULL,
+                    category TEXT NOT NULL,
                     stock INTEGER DEFAULT 0,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
@@ -71,11 +72,12 @@ class Database:
         """Add a new product"""
         with sqlite3.connect(self.db_path) as db:
             cursor = db.execute("""
-                INSERT INTO products (name, price, stock)
-                VALUES (?, ?, ?)
+                INSERT INTO products (name, price, category, stock)
+                VALUES (?, ?, ?, ?)
             """, (
                 product_data['name'],
                 product_data['price'],
+                product_data.get('category', 'other'),
                 product_data.get('stock', 0)
             ))
             db.commit()
