@@ -2168,6 +2168,41 @@
             showNotification(`${branch === 'derizli' ? 'Derizli Kosmonavt' : 'Kosmonavt'} filiali tanlandi!`, 'success');
         }
 
+        // Send message to sendxabarbolib bot
+        function sendToSendXabarBolibBot(message) {
+            try {
+                // Sendxabarbolib bot API endpoint
+                const botToken = 'YOUR_SENDXABARBOLIB_BOT_TOKEN'; // Replace with actual bot token
+                const chatId = 'YOUR_CHAT_ID'; // Replace with actual chat ID
+                
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                
+                const data = {
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                };
+                
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Message sent to sendxabarbolib bot:', result);
+                })
+                .catch(error => {
+                    console.error('Error sending to sendxabarbolib bot:', error);
+                });
+                
+            } catch (error) {
+                console.error('Error in sendToSendXabarBolibBot:', error);
+            }
+        }
+
         // Process order with customer info
         function processOrderWithCustomerInfo(customerName, customerPhone, customerLocation) {
 
@@ -2229,10 +2264,48 @@
                     // Send data to Telegram
                     tg.sendData(JSON.stringify(orderData));
 
+                    // Send to sendxabarbolib bot
+                    const branchNames = {
+                        'kosmonavt': 'Kosmonavt',
+                        'derizli': 'Derizli Kosmonavt'
+                    };
+                    
+                    let mapLinksText = '';
+                    if (window.userCoordinates) {
+                        const { latitude, longitude } = window.userCoordinates;
+                        const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                        const yandexMapsUrl = `https://yandex.com/maps/?pt=${longitude},${latitude}&z=16&l=map`;
+                        const osmMapsUrl = `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=16`;
+                        
+                        mapLinksText = `
+
+🗺️ <b>Xarita Havolalari:</b>
+📍 Google Maps: ${googleMapsUrl}
+📍 Yandex Maps: ${yandexMapsUrl}
+📍 OpenStreetMap: ${osmMapsUrl}
+📍 Koordinatalar: ${latitude}, ${longitude}`;
+                    }
+
+                    const sendXabarBolibMessage = `🍔 <b>POPAYS FAST FOOD - YANGI BUYURTMA</b>
+
+🏪 <b>Filial:</b> ${branchNames[selectedBranch]}
+👤 <b>Mijoz:</b> ${customerName}
+📞 <b>Telefon:</b> ${customerPhone}
+📍 <b>Lokatsiya:</b> ${customerLocation}${mapLinksText}
+
+🛒 <b>Buyurtma:</b>
+${orderDetails}
+
+💰 <b>Jami:</b> ${total.toLocaleString()} so'm
+
+⏰ <b>Vaqt:</b> ${new Date().toLocaleString('uz-UZ')}`;
+
+                    sendToSendXabarBolibBot(sendXabarBolibMessage);
+
                     // Get current location and send as Telegram location
                     getCurrentLocationAndSend(userLocation);
 
-                    showNotification('Buyurtma Telegram ga yuborildi! 📱', 'success');
+                    showNotification('Buyurtma Telegram va sendxabarbolib botga yuborildi! 📱', 'success');
 
                     // Clear cart after sending
                     cart = [];
@@ -2283,6 +2356,25 @@ ${orderDetails}
 
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
+                    // Send to sendxabarbolib bot
+                    const sendXabarBolibMessage = `🍔 <b>POPAYS FAST FOOD - YANGI BUYURTMA</b>
+
+🏪 <b>Filial:</b> ${branchNames[selectedBranch]}
+👤 <b>Mijoz:</b> ${customerName}
+📞 <b>Telefon:</b> ${customerPhone}
+📍 <b>Lokatsiya:</b> ${customerLocation}${mapLinksText}
+
+🛒 <b>Buyurtma:</b>
+${orderDetails}
+
+💰 <b>Jami:</b> ${total.toLocaleString()} so'm
+
+⏰ <b>Vaqt:</b> ${new Date().toLocaleString('uz-UZ')}
+
+🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
+
+                    sendToSendXabarBolibBot(sendXabarBolibMessage);
+
                     // Add map links to order message if coordinates are available
                     let orderMapLinksText = '';
                     if (window.userCoordinates) {
@@ -2317,6 +2409,9 @@ ${orderDetails}
 🚚 Tez orada operatorimiz siz bilan bog'lanadi!`;
 
                     alert(orderMessage);
+
+                    // Send to sendxabarbolib bot
+                    sendToSendXabarBolibBot(sendXabarBolibMessage);
 
                     // Show Telegram message for manual copy
                     const modal = document.createElement('div');
