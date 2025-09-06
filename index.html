@@ -2147,9 +2147,9 @@
                         type: 'order',
                         branch: selectedBranch,
                         customer: {
-                            name: userName,
-                            phone: userPhone,
-                            location: userLocation
+                            name: customerName,
+                            phone: customerPhone,
+                            location: customerLocation
                         },
                         items: cart.map(item => ({
                             id: item.id,
@@ -2229,9 +2229,9 @@
                     const telegramMessage = `🍔 *POPAYS FAST FOOD - YANGI BUYURTMA*
 
 🏪 *Filial:* ${branchNames[selectedBranch]}
-👤 *Mijoz:* ${userName}
-📞 *Telefon:* ${userPhone}
-📍 *Lokatsiya:* ${userLocation}${mapLinksText}
+👤 *Mijoz:* ${customerName}
+📞 *Telefon:* ${customerPhone}
+📍 *Lokatsiya:* ${customerLocation}${mapLinksText}
 
 🛒 *Buyurtma:*
 ${orderDetails}
@@ -2263,9 +2263,9 @@ ${orderDetails}
                     const orderMessage = `✅ Buyurtmangiz qabul qilindi!
 
 🏪 Filial: ${branchNames[selectedBranch]}
-👤 Mijoz: ${userName}
-📞 Telefon: ${userPhone}
-📍 Lokatsiya: ${userLocation}${orderMapLinksText}
+👤 Mijoz: ${customerName}
+📞 Telefon: ${customerPhone}
+📍 Lokatsiya: ${customerLocation}${orderMapLinksText}
 
 🛒 Buyurtma:
 ${orderDetails}
@@ -2334,9 +2334,9 @@ ${orderDetails}
                 const orderMessage = `✅ Buyurtmangiz qabul qilindi!
 
 🏪 Filial: ${branchNames[selectedBranch]}
-👤 Mijoz: ${userName}
-📞 Telefon: ${userPhone}
-📍 Lokatsiya: ${userLocation}
+👤 Mijoz: ${customerName}
+📞 Telefon: ${customerPhone}
+📍 Lokatsiya: ${customerLocation}
 
 🛒 Buyurtma:
 ${orderDetails}
@@ -2662,8 +2662,8 @@ ${orderDetails}
                     // Send as formatted text message with clickable links
                     const textMessage = `🗺️ *XARITA HAVOLALARI*
 
-👤 *Mijoz:* ${userName}
-📞 *Telefon:* ${userPhone}
+👤 *Mijoz:* ${customerName}
+📞 *Telefon:* ${customerPhone}
 📍 *Koordinatalar:* ${mapData.coordinates.latitude}, ${mapData.coordinates.longitude}
 🎯 *Aniqlik:* ±${mapData.coordinates.accuracy}m
 
@@ -3060,9 +3060,9 @@ ${orderDetails}
 
                     const telegramMessage = `🍔 *POPAYS FAST FOOD - YANGI BUYURTMA*
 
-👤 *Mijoz:* ${userName}
-📞 *Telefon:* ${userPhone}
-📍 *Lokatsiya:* ${userLocation}
+👤 *Mijoz:* ${customerName}
+📞 *Telefon:* ${customerPhone}
+📍 *Lokatsiya:* ${customerLocation}
 
 🛒 *Buyurtma:*
 ${orderDetails}
