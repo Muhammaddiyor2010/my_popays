@@ -20,6 +20,7 @@ class Database:
                     price INTEGER NOT NULL,
                     category TEXT NOT NULL,
                     stock INTEGER DEFAULT 0,
+                    description TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             """)
@@ -66,19 +67,27 @@ class Database:
                 )
             """)
 
+            # Add description column if it doesn't exist (for existing databases)
+            try:
+                db.execute("ALTER TABLE products ADD COLUMN description TEXT")
+            except sqlite3.OperationalError:
+                # Column already exists, ignore error
+                pass
+            
             db.commit()
 
     def add_product(self, product_data: Dict) -> int:
         """Add a new product"""
         with sqlite3.connect(self.db_path) as db:
             cursor = db.execute("""
-                INSERT INTO products (name, price, category, stock)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO products (name, price, category, stock, description)
+                VALUES (?, ?, ?, ?, ?)
             """, (
                 product_data['name'],
                 product_data['price'],
                 product_data.get('category', 'other'),
-                product_data.get('stock', 0)
+                product_data.get('stock', 0),
+                product_data.get('description', '')
             ))
             db.commit()
             return cursor.lastrowid
@@ -217,39 +226,39 @@ class Database:
     def populate_products(self):
         """Populate database with default products"""
         products = [
-            {"name": "Oddiy HotDog", "price": 8000, "category": "hotdog", "stock": 150},
-            {"name": "HotDog dvaynoy", "price": 11000, "category": "hotdog", "stock": 150},
-            {"name": "HotDog kanatskiy", "price": 12000, "category": "hotdog", "stock": 150},
-            {"name": "HotDog kanatskiy dvaynoy", "price": 15000, "category": "hotdog", "stock": 150},
-            {"name": "Go'shtli HotDog", "price": 25000, "category": "hotdog", "stock": 150},
-            {"name": "Longer", "price": 20000, "category": "hotdog", "stock": 150},
-            {"name": "Longer Cheese", "price": 24000, "category": "hotdog", "stock": 150},
-            {"name": "BBQ burger", "price": 25000, "category": "burger", "stock": 150},
-            {"name": "Cheese burger", "price": 30000, "category": "burger", "stock": 150},
-            {"name": "BBQ burger halapeno", "price": 30000, "category": "burger", "stock": 150},
-            {"name": "BBQ double burger", "price": 37000, "category": "burger", "stock": 150},
-            {"name": "Double Cheese burger", "price": 45000, "category": "burger", "stock": 150},
-            {"name": "Chicken Burger", "price": 23000, "category": "burger", "stock": 150},
-            {"name": "Chicken cheese", "price": 28000, "category": "burger", "stock": 150},
-            {"name": "Oddiy Lavash", "price": 28000, "category": "lavash", "stock": 150},
-            {"name": "Extra Lavash", "price": 33000, "category": "lavash", "stock": 150},
-            {"name": "Cheese Lavash", "price": 28000, "category": "lavash", "stock": 150},
-            {"name": "Extra cheese Lavash", "price": 38000, "category": "lavash", "stock": 150},
-            {"name": "Shaurma", "price": 20000, "category": "lavash", "stock": 150},
-            {"name": "Shaurma cheese", "price": 33000, "category": "lavash", "stock": 150},
-            {"name": "Shaurma extra", "price": 33000, "category": "lavash", "stock": 150},
-            {"name": "Shaurma extra cheese", "price": 38000, "category": "lavash", "stock": 150},
-            {"name": "Strips", "price": 30000, "category": "sides", "stock": 150},
-            {"name": "Fri", "price": 12000, "category": "sides", "stock": 150},
-            {"name": "Suv", "price": 3000, "category": "drinks", "stock": 150},
-            {"name": "Twister Classic", "price": 25000, "category": "twister", "stock": 150},
-            {"name": "Twister Cheese", "price": 30000, "category": "twister", "stock": 150},
-            {"name": "Twister Spicy", "price": 28000, "category": "twister", "stock": 150},
-            {"name": "Combo Pizza Margherita", "price": 45000, "category": "combo", "stock": 150},
-            {"name": "Combo Pizza Pepperoni", "price": 50000, "category": "combo", "stock": 150},
-            {"name": "Combo Burger", "price": 35000, "category": "combo", "stock": 150},
-            {"name": "Combo HotDog", "price": 25000, "category": "combo", "stock": 150},
-            {"name": "Combo Lavash", "price": 40000, "category": "combo", "stock": 150}
+            {"name": "Oddiy HotDog", "price": 8000, "category": "hotdog", "stock": 150, "description": "Oddiy hotdog - klassik ta'm va soddalik"},
+            {"name": "HotDog dvaynoy", "price": 11000, "category": "hotdog", "stock": 150, "description": "Ikki xil kolbasa bilan tayyorlangan hotdog"},
+            {"name": "HotDog kanatskiy", "price": 12000, "category": "hotdog", "stock": 150, "description": "Kanatskiy kolbasa bilan tayyorlangan hotdog"},
+            {"name": "HotDog kanatskiy dvaynoy", "price": 15000, "category": "hotdog", "stock": 150, "description": "Ikki xil kanatskiy kolbasa bilan tayyorlangan hotdog"},
+            {"name": "Go'shtli HotDog", "price": 25000, "category": "hotdog", "stock": 150, "description": "Go'shtli kolbasa bilan tayyorlangan hotdog"},
+            {"name": "Longer", "price": 20000, "category": "hotdog", "stock": 150, "description": "Uzun hotdog - katta hajm va to'yingan ta'm"},
+            {"name": "Longer Cheese", "price": 24000, "category": "hotdog", "stock": 150, "description": "Uzun hotdog pishloq bilan"},
+            {"name": "BBQ burger", "price": 25000, "category": "burger", "stock": 150, "description": "BBQ sousi bilan tayyorlangan burger"},
+            {"name": "Cheese burger", "price": 30000, "category": "burger", "stock": 150, "description": "Pishloq bilan tayyorlangan burger"},
+            {"name": "BBQ burger halapeno", "price": 30000, "category": "burger", "stock": 150, "description": "BBQ sousi va halapeno bilan tayyorlangan burger"},
+            {"name": "BBQ double burger", "price": 37000, "category": "burger", "stock": 150, "description": "Ikki xil go'sht va BBQ sousi bilan tayyorlangan burger"},
+            {"name": "Double Cheese burger", "price": 45000, "category": "burger", "stock": 150, "description": "Ikki xil pishloq bilan tayyorlangan burger"},
+            {"name": "Chicken Burger", "price": 23000, "category": "burger", "stock": 150, "description": "Tovuq go'shti bilan tayyorlangan burger"},
+            {"name": "Chicken cheese", "price": 28000, "category": "burger", "stock": 150, "description": "Tovuq go'shti va pishloq bilan tayyorlangan burger"},
+            {"name": "Oddiy Lavash", "price": 28000, "category": "lavash", "stock": 150, "description": "Oddiy lavash - klassik ta'm va soddalik"},
+            {"name": "Extra Lavash", "price": 33000, "category": "lavash", "stock": 150, "description": "Qo'shimcha ingredientlar bilan tayyorlangan lavash"},
+            {"name": "Cheese Lavash", "price": 28000, "category": "lavash", "stock": 150, "description": "Pishloq bilan tayyorlangan lavash"},
+            {"name": "Extra cheese Lavash", "price": 38000, "category": "lavash", "stock": 150, "description": "Qo'shimcha pishloq bilan tayyorlangan lavash"},
+            {"name": "Shaurma", "price": 20000, "category": "lavash", "stock": 150, "description": "Klassik shaurma - oddiy va mazali"},
+            {"name": "Shaurma cheese", "price": 33000, "category": "lavash", "stock": 150, "description": "Pishloq bilan tayyorlangan shaurma"},
+            {"name": "Shaurma extra", "price": 33000, "category": "lavash", "stock": 150, "description": "Qo'shimcha ingredientlar bilan tayyorlangan shaurma"},
+            {"name": "Shaurma extra cheese", "price": 38000, "category": "lavash", "stock": 150, "description": "Qo'shimcha pishloq va ingredientlar bilan tayyorlangan shaurma"},
+            {"name": "Strips", "price": 30000, "category": "sides", "stock": 150, "description": "Tovuq strips - qovurilgan tovuq bo'laklari"},
+            {"name": "Fri", "price": 12000, "category": "sides", "stock": 150, "description": "Qovurilgan kartoshka - klassik ta'm"},
+            {"name": "Suv", "price": 3000, "category": "drinks", "stock": 150, "description": "Toza suv - 0.5L"},
+            {"name": "Twister Classic", "price": 25000, "category": "twister", "stock": 150, "description": "Klassik twister - oddiy va mazali"},
+            {"name": "Twister Cheese", "price": 30000, "category": "twister", "stock": 150, "description": "Pishloq bilan tayyorlangan twister"},
+            {"name": "Twister Spicy", "price": 28000, "category": "twister", "stock": 150, "description": "Achchiq ta'mli twister"},
+            {"name": "Combo Pizza Margherita", "price": 45000, "category": "combo", "stock": 150, "description": "Pizza Margherita + ichimlik + fri"},
+            {"name": "Combo Pizza Pepperoni", "price": 50000, "category": "combo", "stock": 150, "description": "Pizza Pepperoni + ichimlik + fri"},
+            {"name": "Combo Burger", "price": 35000, "category": "combo", "stock": 150, "description": "Burger + ichimlik + fri"},
+            {"name": "Combo HotDog", "price": 25000, "category": "combo", "stock": 150, "description": "HotDog + ichimlik + fri"},
+            {"name": "Combo Lavash", "price": 40000, "category": "combo", "stock": 150, "description": "Lavash + ichimlik + fri"}
         ]
         
         # Clear existing products
