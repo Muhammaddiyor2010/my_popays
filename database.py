@@ -21,6 +21,7 @@ class Database:
                     category TEXT NOT NULL,
                     stock INTEGER DEFAULT 0,
                     description TEXT,
+                    img TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             """)
@@ -74,20 +75,28 @@ class Database:
                 # Column already exists, ignore error
                 pass
             
+            # Add img column if it doesn't exist (for existing databases)
+            try:
+                db.execute("ALTER TABLE products ADD COLUMN img TEXT")
+            except sqlite3.OperationalError:
+                # Column already exists, ignore error
+                pass
+            
             db.commit()
 
     def add_product(self, product_data: Dict) -> int:
         """Add a new product"""
         with sqlite3.connect(self.db_path) as db:
             cursor = db.execute("""
-                INSERT INTO products (name, price, category, stock, description)
-                VALUES (?, ?, ?, ?, ?)
+                INSERT INTO products (name, price, category, stock, description, img)
+                VALUES (?, ?, ?, ?, ?, ?)
             """, (
                 product_data['name'],
                 product_data['price'],
                 product_data.get('category', 'other'),
                 product_data.get('stock', 0),
-                product_data.get('description', '')
+                product_data.get('description', ''),
+                product_data.get('img', '')
             ))
             db.commit()
             return cursor.lastrowid
