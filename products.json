@@ -1,0 +1,412 @@
+[
+  {
+    "id": 1,
+    "name": "Oddiy HotDog",
+    "price": 8000,
+    "category": "hotdog",
+    "stock": 150,
+    "description": "Klassik hotdog - oddiy kolbasa, sous va sabzavotlar bilan",
+    "img": "./imgs/Hot dog oddiy.jpg"
+  },
+  {
+    "id": 2,
+    "name": "HotDog dvaynoy",
+    "price": 11000,
+    "category": "hotdog",
+    "stock": 150,
+    "description": "Ikki xil kolbasa, sous va sabzavotlar bilan to'yingan hotdog",
+    "img": "./imgs/hot dog dvaynoy.jpg"
+  },
+  {
+    "id": 3,
+    "name": "HotDog kanatskiy",
+    "price": 12000,
+    "category": "hotdog",
+    "stock": 150,
+    "description": "Kanatskiy kolbasa, sous va sabzavotlar bilan mazali hotdog",
+    "img": "./imgs/hotdog kanada.jpg"
+  },
+  {
+    "id": 4,
+    "name": "HotDog kanatskiy dvaynoy",
+    "price": 15000,
+    "category": "hotdog",
+    "stock": 150,
+    "description": "Ikki xil kanatskiy kolbasa, sous va sabzavotlar bilan katta hotdog",
+    "img": "./imgs/hot dog kanada double.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Go'shtli HotDog",
+    "price": 25000,
+    "category": "hotdog",
+    "stock": 150,
+    "description": "Go'shtli kolbasa, sous va sabzavotlar bilan to'yingan hotdog",
+    "img": "./imgs/hotdog go'shtli.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Longer",
+    "price": 20000,
+    "category": "hotdog",
+    "stock": 150,
+    "description": "Uzun hotdog - katta kolbasa, sous va sabzavotlar bilan",
+    "img": "./imgs/longer.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Longer Cheese",
+    "price": 24000,
+    "category": "hotdog",
+    "stock": 150,
+    "description": "Uzun hotdog pishloq, sous va sabzavotlar bilan",
+    "img": "./imgs/longer cheese.jpg"
+  },
+  {
+    "id": 8,
+    "name": "BBQ burger",
+    "price": 25000,
+    "category": "burger",
+    "stock": 150,
+    "description": "BBQ sousi, go'sht, pishloq va sabzavotlar bilan burger",
+    "img": "./imgs/BBQ burger.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Cheese burger",
+    "price": 30000,
+    "category": "burger",
+    "stock": 150,
+    "description": "Pishloq, go'sht, sous va sabzavotlar bilan burger",
+    "img": "./imgs/Double cheese burger.jpg"
+  },
+  {
+    "id": 10,
+    "name": "BBQ burger halapeno",
+    "price": 30000,
+    "category": "burger",
+    "stock": 150,
+    "description": "BBQ sousi, halapeno, go'sht va sabzavotlar bilan achchiq burger",
+    "img": "./imgs/Halapeno burger.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Double Cheese burger",
+    "price": 45000,
+    "category": "burger",
+    "stock": 150,
+    "description": "Ikki xil pishloq, go'sht, sous va sabzavotlar bilan burger",
+    "img": "./imgs/Double cheese burger.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Chicken Burger",
+    "price": 23000,
+    "category": "burger",
+    "stock": 150,
+    "description": "Tovuq go'shti, sous va sabzavotlar bilan burger",
+    "img": "./imgs/Checken burger.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Chicken cheese",
+    "price": 28000,
+    "category": "burger",
+    "stock": 150,
+    "description": "Tovuq go'shti, pishloq, sous va sabzavotlar bilan burger",
+    "img": "./imgs/chechken cheese.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Oddiy Lavash",
+    "price": 28000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Klassik lavash - go'sht, sous va sabzavotlar bilan",
+    "img": "./imgs/lavash.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Extra Lavash",
+    "price": 33000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Qo'shimcha go'sht, sous va sabzavotlar bilan to'yingan lavash",
+    "img": "./imgs/lavash extra.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Cheese Lavash",
+    "price": 28000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Pishloq, go'sht, sous va sabzavotlar bilan lavash",
+    "img": "./imgs/lavash sirli.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Extra cheese Lavash",
+    "price": 38000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Qo'shimcha pishloq, go'sht, sous va sabzavotlar bilan lavash",
+    "img": "./imgs/extra sirli.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Shaurma",
+    "price": 20000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Klassik shaurma - go'sht, sous va sabzavotlar bilan",
+    "img": "./imgs/shaurma.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Shaurma extra",
+    "price": 33000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Qo'shimcha go'sht, sous va sabzavotlar bilan to'yingan shaurma",
+    "img": "./imgs/extra shaurma.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Twister Classic",
+    "price": 25000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Klassik twister - go'sht, sous va sabzavotlar bilan",
+    "img": "./imgs/twister.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Twister Cheese",
+    "price": 30000,
+    "category": "lavash",
+    "stock": 150,
+    "description": "Pishloq, go'sht, sous va sabzavotlar bilan twister",
+    "img": "./imgs/twister cheese.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Strips",
+    "price": 30000,
+    "category": "sides",
+    "stock": 150,
+    "description": "Tovuq strips - qovurilgan tovuq bo'laklari, sous bilan",
+    "img": "./imgs/strips.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Fri",
+    "price": 12000,
+    "category": "sides",
+    "stock": 150,
+    "description": "Qovurilgan kartoshka - klassik ta'm, tuz va sous bilan",
+    "img": "./imgs/fri.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Suv",
+    "price": 3000,
+    "category": "drinks",
+    "stock": 150,
+    "description": "Toza suv - tabiiy va sog'lom",
+    "img": "./imgs/water.webp",
+    "sizes": [
+      {"size": "0.5L", "price": 3000},
+      {"size": "1L", "price": 5000},
+      {"size": "1.5L", "price": 7000}
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Coca Cola",
+    "price": 8000,
+    "category": "drinks",
+    "stock": 150,
+    "description": "Coca Cola - klassik gazli ichimlik",
+    "img": "./imgs/coca cola.png",
+    "sizes": [
+      {"size": "0.5L", "price": 8000},
+      {"size": "1L", "price": 12000},
+      {"size": "1.5L", "price": 15000}
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Pepsi",
+    "price": 8000,
+    "category": "drinks",
+    "stock": 150,
+    "description": "Pepsi - klassik gazli ichimlik",
+    "img": "./imgs/pepsi.png",
+    "sizes": [
+      {"size": "0.5L", "price": 8000},
+      {"size": "1L", "price": 12000},
+      {"size": "1.5L", "price": 15000}
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Fanta",
+    "price": 8000,
+    "category": "drinks",
+    "stock": 150,
+    "description": "Fanta - apelsin ta'mli gazli ichimlik",
+    "img": "./imgs/fanta.png",
+    "sizes": [
+      {"size": "0.5L", "price": 8000},
+      {"size": "1L", "price": 12000},
+      {"size": "1.5L", "price": 15000}
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Combo HotDog",
+    "price": 45000,
+    "category": "combo",
+    "stock": 150,
+    "description": "HotDog + ichimlik + fri",
+    "img": "./imgs/hotdog co,bo.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Combo Burger",
+    "price": 50000,
+    "category": "combo",
+    "stock": 150,
+    "description": "Burger + ichimlik + fri",
+    "img": "./imgs/burger combo.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Combo Lavash",
+    "price": 35000,
+    "category": "combo",
+    "stock": 150,
+    "description": "Lavash + ichimlik + fri",
+    "img": "./imgs/Lavash combo.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Combo Sandwich",
+    "price": 25000,
+    "category": "combo",
+    "stock": 150,
+    "description": "Sandwich + fri + ichimlik",
+    "img": "./imgs/free sanwich.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Donar Pizza",
+    "price": 70000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "Donar go'shti, pishloq va sabzavotlar bilan pizza",
+    "img": "./imgs/danar pizza.jpg",
+    "sizes": [
+      {"size": "SM", "price": 70000},
+      {"size": "MD", "price": 90000},
+      {"size": "LG", "price": 110000}
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Peperoni Pizza",
+    "price": 65000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "Peperoni kolbasa, pishloq va sabzavotlar bilan pizza",
+    "img": "./imgs/pepperoni.jpg",
+    "sizes": [
+      {"size": "SM", "price": 65000},
+      {"size": "MD", "price": 85000},
+      {"size": "LG", "price": 100000}
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Popays Pizza",
+    "price": 75000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "Popays go'shti, pishloq va sabzavotlar bilan pizza",
+    "img": "./imgs/popays.jpg",
+    "sizes": [
+      {"size": "SM", "price": 75000},
+      {"size": "MD", "price": 95000},
+      {"size": "LG", "price": 120000}
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Chicken Pizza",
+    "price": 70000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "Tovuq go'shti, pishloq va sabzavotlar bilan pizza",
+    "img": "./imgs/chicken.jpg",
+    "sizes": [
+      {"size": "SM", "price": 70000},
+      {"size": "MD", "price": 90000},
+      {"size": "LG", "price": 110000}
+    ]
+  },
+  {
+    "id": 36,
+    "name": "4 Fasl Pizza",
+    "price": 120000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "4 fasl sabzavotlari, pishloq va sous bilan pizza",
+    "img": "./imgs/4 fasl.jpg",
+    "sizes": [
+      {"size": "MD", "price": 120000},
+      {"size": "LG", "price": 140000}
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Qazili Pizza",
+    "price": 70000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "Qazili go'shti, pishloq va sabzavotlar bilan pizza",
+    "img": "./imgs/qazili.jpg",
+    "sizes": [
+      {"size": "SM", "price": 70000},
+      {"size": "MD", "price": 90000},
+      {"size": "LG", "price": 110000}
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Choco Pizza",
+    "price": 60000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "Shokolad, meva va qaymoq bilan shirin pizza",
+    "img": "./imgs/choco.jpg",
+    "sizes": [
+      {"size": "SM", "price": 60000},
+      {"size": "MD", "price": 80000},
+      {"size": "LG", "price": 95000}
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Mushroom Pizza",
+    "price": 60000,
+    "category": "pizza",
+    "stock": 150,
+    "description": "Qo'ziqorin, pishloq va sabzavotlar bilan pizza",
+    "img": "./imgs/mushroom.jpg",
+    "sizes": [
+      {"size": "SM", "price": 60000},
+      {"size": "MD", "price": 80000},
+      {"size": "LG", "price": 95000}
+    ]
+  }
+]

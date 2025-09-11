@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "hotdog",
+    "description": "HotDog mahsulotlari",
+    "display_order": 1,
+    "is_active": 1,
+    "created_at": "2025-09-10 17:21:43"
+  },
+  {
+    "id": 2,
+    "name": "burger",
+    "description": "Burger mahsulotlari",
+    "display_order": 2,
+    "is_active": 1,
+    "created_at": "2025-09-10 17:21:43"
+  },
+  {
+    "id": 3,
+    "name": "lavash",
+    "description": "Lavash va Shaurma mahsulotlari",
+    "display_order": 3,
+    "is_active": 1,
+    "created_at": "2025-09-10 17:21:43"
+  },
+  {
+    "id": 4,
+    "name": "sides",
+    "description": "Snacks va qo'shimcha taomlar",
+    "display_order": 4,
+    "is_active": 1,
+    "created_at": "2025-09-10 17:21:43"
+  },
+  {
+    "id": 5,
+    "name": "drinks",
+    "description": "Ichimliklar",
+    "display_order": 5,
+    "is_active": 1,
+    "created_at": "2025-09-10 17:21:43"
+  },
+  {
+    "id": 6,
+    "name": "combo",
+    "description": "Combo taomlar",
+    "display_order": 6,
+    "is_active": 1,
+    "created_at": "2025-09-10 17:21:43"
+  },
+  {
+    "id": 7,
+    "name": "pizza",
+    "description": "Pizza mahsulotlari",
+    "display_order": 7,
+    "is_active": 1,
+    "created_at": "2025-09-10 17:21:43"
+  }
+]
