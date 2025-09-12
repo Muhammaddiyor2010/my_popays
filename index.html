@@ -1308,7 +1308,7 @@
                         const isLowStock = product.stock > 0 && product.stock <= 3;
                         const stockMessage = isOutOfStock ? 'Mahsulot tugadi' : (isLowStock ? `Qoldi: ${product.stock} ta` : '');
                         const hasSizes = product.sizes && product.sizes.length > 0;
-                        // Remove branch selection requirement for adding products
+                        // Allow adding products from any branch
                         const noBranchSelected = false;
 
                         return `
@@ -1317,12 +1317,10 @@
                             <img src="${product.image}" alt="${product.name}" class="w-full h-32 object-cover rounded-xl mb-3 ${isOutOfStock || noBranchSelected ? 'grayscale' : ''}">
                             ${product.badge ? `<span class="absolute top-2 right-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">${product.badge}</span>` : ''}
                             ${isOutOfStock ? '<div class="absolute inset-0 bg-black/50 rounded-xl flex items-center justify-center"><span class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">TUGADI</span></div>' : ''}
-                            ${noBranchSelected && !isOutOfStock ? '<div class="absolute inset-0 bg-black/50 rounded-xl flex items-center justify-center"><span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-bold">FILIALNI TANLANG</span></div>' : ''}
                         </div>
                         <h3 class="font-bold text-white mb-2">${product.name}</h3>
                         <p class="text-gray-400 text-sm mb-3">${product.description}</p>
                         ${stockMessage ? `<p class="text-yellow-400 text-sm mb-2 font-medium">${stockMessage}</p>` : ''}
-                        ${noBranchSelected && !isOutOfStock ? `<p class="text-yellow-400 text-sm mb-2 font-medium">Avval filialni tanlang!</p>` : ''}
                         ${hasSizes ? `<p class="text-blue-400 text-sm mb-2 font-medium">${product.category === 'drinks' ? 'Litrini tanlang' : (product.category === 'pizza' ? 'Santimetrini tanlang' : 'Grammini tanlang')}</p>` : ''}
                         <div class="flex justify-between items-center">
                             <span class="text-orange-400 font-bold text-lg">${hasSizes ? `${product.sizes[0].price.toLocaleString()} so'mdan` : `${product.price.toLocaleString()} so'm`}</span>
@@ -2195,12 +2193,7 @@
 
                 // Branch selection is not required for adding products to cart
 
-                // Check if combo or pizza product is being added to Derizli branch (only if branch is selected)
-                if (selectedBranch && (product.category === 'combo' || product.category === 'pizza') && selectedBranch === 'derizli') {
-                    const itemType = product.category === 'combo' ? 'combolar' : 'pizzalar';
-                    showNotification(`Hozircha Derizli filialida ${itemType} yo'q!`, 'warning');
-                    return;
-                }
+                // Allow ordering combo and pizza from any branch
 
                 const productWithSize = {
                     ...product,
@@ -2238,12 +2231,7 @@
 
                 // Branch selection is not required for adding products to cart
 
-                // Check if combo or pizza product is being added to Derizli branch (only if branch is selected)
-                if (selectedBranch && (product.category === 'combo' || product.category === 'pizza') && selectedBranch === 'derizli') {
-                    const itemType = product.category === 'combo' ? 'combolar' : 'pizzalar';
-                    showNotification(`Hozircha Derizli filialida ${itemType} yo'q!`, 'warning');
-                    return;
-                }
+                // Allow ordering combo and pizza from any branch
 
                 const existingItem = cart.find(item => item.id === productId);
 
@@ -2301,31 +2289,7 @@
                 // Hide error message
                 document.getElementById('branchSelectionError').classList.add('hidden');
 
-                // If switching to Derizli branch, remove combo and pizza items from cart
-                if (branch === 'derizli') {
-                    const comboItems = cart.filter(item => item.category === 'combo');
-                    const pizzaItems = cart.filter(item => item.category === 'pizza');
-                    const itemsToRemove = [...comboItems, ...pizzaItems];
-                    
-                    if (itemsToRemove.length > 0) {
-                        cart = cart.filter(item => item.category !== 'combo' && item.category !== 'pizza');
-                        updateCartUI();
-                        
-                        let message = 'Derizli filialida quyidagi mahsulotlar yo\'q: ';
-                        const removedNames = [];
-                        
-                        if (comboItems.length > 0) {
-                            removedNames.push('combolar');
-                        }
-                        if (pizzaItems.length > 0) {
-                            removedNames.push('pizzalar');
-                        }
-                        
-                        message += removedNames.join(' va ') + '. Ular savatdan olib tashlandi!';
-                        
-                        showNotification(message, 'warning');
-                    }
-                }
+                // All products are available from all branches now
 
                 // Branch selection notification removed
                 
@@ -2450,11 +2414,7 @@
                     return;
                 }
 
-                // Check if branch is selected before checkout
-                if (!selectedBranch) {
-                    showNotification('Iltimos, avval filialni tanlang!', 'warning');
-                    return;
-                }
+                // Branch selection is optional now - all products available from all branches
 
                 // Show cart modal with customer info form
                 toggleCart();
@@ -2466,12 +2426,7 @@
                 const customerPhone = document.getElementById('cartCustomerPhone').value.trim();
                 const customerLocation = document.getElementById('cartCustomerLocation').value.trim();
 
-                // Check if branch is selected
-                if (!selectedBranch) {
-                    showNotification('Iltimos, filialni tanlang!', 'error');
-                    document.getElementById('branchSelectionError').classList.remove('hidden');
-                    return;
-                }
+                // Branch selection is optional now - all products available from all branches
 
                 if (!customerName || !customerPhone || !customerLocation) {
                     showNotification('Iltimos, barcha maydonlarni to\'ldiring!', 'error');
@@ -2505,31 +2460,7 @@
                     btn.querySelector('i').classList.add('hidden');
                 });
 
-                // If switching to Derizli branch, remove combo and pizza items from cart
-                if (branch === 'derizli') {
-                    const comboItems = cart.filter(item => item.category === 'combo');
-                    const pizzaItems = cart.filter(item => item.category === 'pizza');
-                    const itemsToRemove = [...comboItems, ...pizzaItems];
-                    
-                    if (itemsToRemove.length > 0) {
-                        cart = cart.filter(item => item.category !== 'combo' && item.category !== 'pizza');
-                        updateCartUI();
-                        
-                        let message = 'Derizli filialida quyidagi mahsulotlar yo\'q: ';
-                        const removedNames = [];
-                        
-                        if (comboItems.length > 0) {
-                            removedNames.push('combolar');
-                        }
-                        if (pizzaItems.length > 0) {
-                            removedNames.push('pizzalar');
-                        }
-                        
-                        message += removedNames.join(' va ') + '. Ular savatdan olib tashlandi!';
-                        
-                        showNotification(message, 'warning');
-                    }
-                }
+                // All products are available from all branches now
 
                 // Add selection to clicked button
                 const selectedBtn = document.getElementById(`checkoutBranch${branch.charAt(0).toUpperCase() + branch.slice(1)}`);
@@ -2608,7 +2539,7 @@
                         // Prepare order data with branch information and map data
                         const orderData = {
                             type: 'order',
-                            branch: selectedBranch,
+                            branch: selectedBranch || 'any',
                             customer: {
                                 name: customerName,
                                 phone: customerPhone,
@@ -2654,7 +2585,8 @@
                         // Send to sendxabarbolib bot
                         const branchNames = {
                             'kosmonavt': 'Kosmonavt',
-                            'derizli': 'Derizli Kosmonavt'
+                            'derizli': 'Derizli Kosmonavt',
+                            'any': 'Har qanday filial'
                         };
 
                         let mapLinksText = '';
@@ -2675,7 +2607,7 @@
 
                         const sendXabarBolibMessage = `🍔 <b>POPAYS FAST FOOD - YANGI BUYURTMA</b>
 
-🏪 <b>Filial:</b> ${branchNames[selectedBranch]}
+🏪 <b>Filial:</b> ${branchNames[selectedBranch] || 'Har qanday filial'}
 👤 <b>Mijoz:</b> ${customerName}
 📞 <b>Telefon:</b> ${customerPhone}
 📍 <b>Lokatsiya:</b> ${customerLocation}${mapLinksText}
@@ -2746,7 +2678,7 @@ ${orderDetails}
                         // Send to sendxabarbolib bot
                         const sendXabarBolibMessage = `🍔 <b>POPAYS FAST FOOD - YANGI BUYURTMA</b>
 
-🏪 <b>Filial:</b> ${branchNames[selectedBranch]}
+🏪 <b>Filial:</b> ${branchNames[selectedBranch] || 'Har qanday filial'}
 👤 <b>Mijoz:</b> ${customerName}
 📞 <b>Telefon:</b> ${customerPhone}
 📍 <b>Lokatsiya:</b> ${customerLocation}${mapLinksText}

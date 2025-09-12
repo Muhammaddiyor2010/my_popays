@@ -73,7 +73,7 @@
   },
   {
     "id": 9,
-    "name": "Cheese burger",
+    "name": "BQQ Cheese burger",
     "price": 30000,
     "category": "burger",
     "stock": 150,
@@ -82,7 +82,7 @@
   },
   {
     "id": 10,
-    "name": "BBQ burger halapeno",
+    "name": "Halapeno Burger",
     "price": 30000,
     "category": "burger",
     "stock": 150,
@@ -155,7 +155,7 @@
   {
     "id": 18,
     "name": "Shaurma",
-    "price": 20000,
+    "price": 28000,
     "category": "lavash",
     "stock": 150,
     "description": "Klassik shaurma - go'sht, sous va sabzavotlar bilan",
@@ -181,7 +181,7 @@
   },
   {
     "id": 21,
-    "name": "Twister Cheese",
+    "name": "Extra Twister",
     "price": 30000,
     "category": "lavash",
     "stock": 150,
@@ -190,15 +190,34 @@
   },
   {
     "id": 22,
-    "name": "Strips",
+    "name": "Qanotcha",
     "price": 30000,
     "category": "sides",
     "stock": 150,
-    "description": "Tovuq strips - qovurilgan tovuq bo'laklari, sous bilan",
-    "img": "./imgs/strips.jpg"
+    "description": "Tovuq qanotchalari - qovurilgan tovuq qanotlari, sous bilan",
+    "img": "./imgs/qanotcha.jpg",
+    "sizes": [
+      {"size": "200gr", "price": 30000, "cooking_time": 30},
+      {"size": "350gr", "price": 35000, "cooking_time": 38},
+      {"size": "1kg", "price": 95000, "cooking_time": 95}
+    ]
   },
   {
     "id": 23,
+    "name": "Strips",
+    "price": 28000,
+    "category": "sides",
+    "stock": 150,
+    "description": "Tovuq strips - qovurilgan tovuq bo'laklari, sous bilan",
+    "img": "./imgs/strips.jpg",
+    "sizes": [
+      {"size": "200gr", "price": 28000, "cooking_time": 28},
+      {"size": "350gr", "price": 38000, "cooking_time": 38},
+      {"size": "1kg", "price": 90000, "cooking_time": 90}
+    ]
+  },
+  {
+    "id": 40,
     "name": "Fri",
     "price": 12000,
     "category": "sides",
@@ -207,21 +226,7 @@
     "img": "./imgs/fri.jpg"
   },
   {
-    "id": 24,
-    "name": "Suv",
-    "price": 3000,
-    "category": "drinks",
-    "stock": 150,
-    "description": "Toza suv - tabiiy va sog'lom",
-    "img": "./imgs/water.webp",
-    "sizes": [
-      {"size": "0.5L", "price": 3000},
-      {"size": "1L", "price": 5000},
-      {"size": "1.5L", "price": 7000}
-    ]
-  },
-  {
-    "id": 25,
+    "id": 40,
     "name": "Coca Cola",
     "price": 8000,
     "category": "drinks",
@@ -235,7 +240,7 @@
     ]
   },
   {
-    "id": 26,
+    "id": 40,
     "name": "Pepsi",
     "price": 8000,
     "category": "drinks",
@@ -249,12 +254,12 @@
     ]
   },
   {
-    "id": 27,
-    "name": "Fanta",
+    "id": 40,
+    "name": "Flavis",
     "price": 8000,
     "category": "drinks",
     "stock": 150,
-    "description": "Fanta - apelsin ta'mli gazli ichimlik",
+    "description": "Flavis - anor ta'mli gazli ichimlik",
     "img": "./imgs/fanta.png",
     "sizes": [
       {"size": "0.5L", "price": 8000},
@@ -263,43 +268,43 @@
     ]
   },
   {
-    "id": 28,
+    "id": 40,
     "name": "Combo HotDog",
-    "price": 45000,
+    "price": 30000,
     "category": "combo",
     "stock": 150,
     "description": "HotDog + ichimlik + fri",
     "img": "./imgs/hotdog co,bo.jpg"
   },
   {
-    "id": 29,
+    "id": 40,
     "name": "Combo Burger",
-    "price": 50000,
+    "price": 40000,
     "category": "combo",
     "stock": 150,
     "description": "Burger + ichimlik + fri",
     "img": "./imgs/burger combo.jpg"
   },
   {
-    "id": 30,
+    "id": 40,
     "name": "Combo Lavash",
-    "price": 35000,
+    "price": 50000,
     "category": "combo",
     "stock": 150,
-    "description": "Lavash + ichimlik + fri",
+    "description": "Lavash + ichimlik + fri + strips",
     "img": "./imgs/Lavash combo.jpg"
   },
   {
-    "id": 31,
+    "id": 40,
     "name": "Combo Sandwich",
-    "price": 25000,
+    "price": 45000,
     "category": "combo",
     "stock": 150,
-    "description": "Sandwich + fri + ichimlik",
+    "description": "Sandwich + fri",
     "img": "./imgs/free sanwich.jpg"
   },
   {
-    "id": 32,
+    "id": 40,
     "name": "Donar Pizza",
     "price": 70000,
     "category": "pizza",
@@ -313,7 +318,7 @@
     ]
   },
   {
-    "id": 33,
+    "id": 40,
     "name": "Peperoni Pizza",
     "price": 65000,
     "category": "pizza",
@@ -327,7 +332,7 @@
     ]
   },
   {
-    "id": 34,
+    "id": 40,
     "name": "Popays Pizza",
     "price": 75000,
     "category": "pizza",
@@ -341,7 +346,7 @@
     ]
   },
   {
-    "id": 35,
+    "id": 40,
     "name": "Chicken Pizza",
     "price": 70000,
     "category": "pizza",
@@ -355,7 +360,7 @@
     ]
   },
   {
-    "id": 36,
+    "id": 40,
     "name": "4 Fasl Pizza",
     "price": 120000,
     "category": "pizza",
@@ -368,7 +373,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 40,
     "name": "Qazili Pizza",
     "price": 70000,
     "category": "pizza",
@@ -382,7 +387,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 40,
     "name": "Choco Pizza",
     "price": 60000,
     "category": "pizza",
@@ -396,7 +401,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": 40,
     "name": "Mushroom Pizza",
     "price": 60000,
     "category": "pizza",
